@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-02-05T05:54:30.446509+01:00"
+						"dateAndTimeString" : "2022-02-05T06:04:01.353344+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-02-05T06:10:10.285633+01:00"
+						"dateAndTimeString" : "2022-02-05T06:09:19.256337+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "RNtR5p+TDQCUekMJAY1T/w=="
+					"uidString" : "btQaBqCTDQCUi+FSAY1T/w=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development"
+				"string" : "A project is for now a placeholder with just a name. Real CI/CD requires much more: managing the dependencies, keeping a cache of versions of artifacts, tests, etc."
 			}
 		]
 	},
@@ -51,7 +51,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2022-02-05T05:51:05.294931+01:00"
+			"dateAndTimeString" : "2022-02-05T06:03:23.640292+01:00"
 		}
 	},
 	"editEmail" : {
@@ -62,15 +62,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2022-02-05T05:51:20.278601+01:00"
+			"dateAndTimeString" : "2022-02-05T06:03:33.177097+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "GToolkitLauncher"
+		"title" : "Project"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "b77e17da-9f93-0d00-946e-4a11018d53ff"
+		"uuid" : "17c11906-a093-0d00-948a-372e018d53ff"
 	}
 }
