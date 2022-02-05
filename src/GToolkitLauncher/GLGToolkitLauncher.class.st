@@ -8,7 +8,9 @@ Class {
 		'launcherView',
 		'toolbar',
 		'pane',
-		'gtButton'
+		'gtButton',
+		'updater',
+		'versionLabel'
 	],
 	#category : #GToolkitLauncher
 }
@@ -30,7 +32,9 @@ GLGToolkitLauncher >> checkButton [
 		label: 'Check & Download Update';
 		aptitude: (GLGButtonAptitude new left);
 		icon: BrGlamorousVectorIcons play;
-		action: [ self inform: 'Check'];
+		action: [ 
+			updater getLatestVersion.
+			versionLabel text: updater latestVersion asString ];
 		yourself
 ]
 
@@ -49,6 +53,11 @@ GLGToolkitLauncher >> gtButton [
 		action: [ GtWorld openDefault ];
 		yourself.
 	^gtButton
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> initialize [
+	updater := GLGToolkitUpdater new
 ]
 
 { #category : #accessing }
@@ -95,6 +104,17 @@ GLGToolkitLauncher >> toolbar [
 			c vertical exact: 40 ];
 		addChild: self checkButton;
 		addChild: self gtButton;
+		addChild: self versionLabel;
 		yourself.
 	^toolbar
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> versionLabel [
+	versionLabel := BrLabel new
+		aptitude: BrGlamorousLabelAptitude;
+		padding: (BlInsets left: 2);
+		text: '';
+		yourself.
+	^versionLabel
 ]
