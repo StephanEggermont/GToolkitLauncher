@@ -72,6 +72,15 @@ GLGButtonAptitude >> left [
 ]
 
 { #category : #accessing }
+GLGButtonAptitude >> middle [
+	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
+							topLeft: 0;
+							topRight: 0;
+							bottomLeft: 0;
+							bottomRight: 0)).
+]
+
+{ #category : #accessing }
 GLGButtonAptitude >> right [
 	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
 							topLeft: 0;
