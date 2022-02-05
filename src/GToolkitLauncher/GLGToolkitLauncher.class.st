@@ -19,17 +19,32 @@ GLGToolkitLauncher class >> open [
 ]
 
 { #category : #accessing }
-GLGToolkitLauncher >> gtButton [
-	gtButton := BrButton new
+GLGToolkitLauncher >> checkButton [
+	^ BrButton new
 		margin:
 			(BlInsets
 				top: 10
 				left: 10
 				bottom: 10
-				right: 10);
+				right: 0);
+		label: 'Check & Download Update';
+		aptitude: (GLGButtonAptitude new left);
+		icon: BrGlamorousVectorIcons play;
+		action: [ self inform: 'Check'];
+		yourself
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> gtButton [
+	gtButton := BrButton new
+		margin:
+			(BlInsets
+				top: 10
+				left: 0
+				bottom: 10
+				right: 0);
 		label: 'Open Development Environment';
-		aptitude: BrGlamorousButtonRectangularAptitude+ BrGlamorousButtonExteriorAptitude+		BrGlamorousButtonIconAptitude +
-		BrGlamorousButtonWithLabelTooltipAptitude ;
+		aptitude: (GLGButtonAptitude new right) ;
 		icon: BrGlamorousVectorIcons gt;
 		action: [ GtWorld openDefault ];
 		yourself.
@@ -78,6 +93,7 @@ GLGToolkitLauncher >> toolbar [
 		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical exact: 40 ];
+		addChild: self checkButton;
 		addChild: self gtButton;
 		yourself.
 	^toolbar
