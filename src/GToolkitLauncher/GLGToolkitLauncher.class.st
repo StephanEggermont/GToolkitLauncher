@@ -27,7 +27,7 @@ GLGToolkitLauncher >> gtButton [
 				left: 10
 				bottom: 10
 				right: 10);
-		label: 'Check & Download Update';
+		label: 'Open Development Environment';
 		aptitude: BrGlamorousButtonRectangularAptitude+ BrGlamorousButtonExteriorAptitude+		BrGlamorousButtonIconAptitude +
 		BrGlamorousButtonWithLabelTooltipAptitude ;
 		icon: BrGlamorousVectorIcons gt;

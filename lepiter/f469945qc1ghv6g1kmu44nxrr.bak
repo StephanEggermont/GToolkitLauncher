@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-02-05T06:09:47.211539+01:00"
+						"dateAndTimeString" : "2022-02-05T06:10:10.285633+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,44 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day. That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development"
+				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-02-05T08:23:53.320672+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-02-05T08:23:53.320672+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "qnqM/KGTDQCx4csCDe3euQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},

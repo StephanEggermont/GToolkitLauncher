@@ -40,6 +40,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-02-05T08:24:00.857422+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2022-02-05T08:24:12.865408+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "qnqM/KGTDQCx4csCDe3euQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The launcher by default does not show GT"
 			}
 		]
 	},
