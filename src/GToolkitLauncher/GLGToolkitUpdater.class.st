@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'lastUpdated',
 		'latestVersion',
-		'model'
+		'model',
+		'zipName'
 	],
 	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
@@ -17,9 +18,30 @@ GLGToolkitUpdater class >> on: aLauncherModel [
 ]
 
 { #category : #accessing }
+GLGToolkitUpdater >> downloadUpdate: aLocalEnvironment [
+	| downloadLink |
+	downloadLink := 'https://dl.feenk.com/gt/', zipName.
+	ZnClient new
+		url: downloadLink;
+		downloadTo: aLocalEnvironment downloadPath
+]
+
+{ #category : #accessing }
+GLGToolkitUpdater >> extractUpdate: aLocalEnvironment [
+	| command |
+	command := 'cd "' , aLocalEnvironment downloadPath fullName
+		, '" && unzip ', zipName, ' -d "'
+		, (aLocalEnvironment releasesPath / latestVersion) fullName
+		, '"'.
+	LibC runCommand: command.
+	^ command
+]
+
+{ #category : #accessing }
 GLGToolkitUpdater >> getLatestVersion [
-	|foundVersion|
-	foundVersion := (STONJSON fromString: (ZnEasy get: 'https://api.github.com/repos/feenkcom/gtoolkit/releases/latest') contents) at: #tag_name.
+	| foundVersion |
+	foundVersion := (STONJSON fromString: (ZnEasy get: self latestVersionLocation) contents)
+			at: #tag_name.
 	lastUpdated := DateAndTime now.
 	latestVersion := foundVersion
 ]
@@ -35,6 +57,29 @@ GLGToolkitUpdater >> latestVersion [
 ]
 
 { #category : #accessing }
+GLGToolkitUpdater >> latestVersionLocation [
+	^ 'https://api.github.com/repos/feenkcom/gtoolkit/releases/latest'
+]
+
+{ #category : #accessing }
 GLGToolkitUpdater >> model: aLauncherModel [ 
 	model := aLauncherModel
+]
+
+{ #category : #accessing }
+GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
+	| command |
+	command := 'mv "' ,( aLocalEnvironment downloadPath / zipName) fullName,'" "'
+		, (aLocalEnvironment releasesPath / latestVersion) fullName
+		, '"'.
+	LibC runCommand: command.
+	^ command
+]
+
+{ #category : #accessing }
+GLGToolkitUpdater >> updateIn: aLocalEnvironment [
+	zipName := 'GlamorousToolkit', GLGPlatform current platformName, '64-release.zip'. 
+	self downloadUpdate: aLocalEnvironment.
+	self extractUpdate: aLocalEnvironment.
+	self moveDownloadedZip: aLocalEnvironment
 ]
