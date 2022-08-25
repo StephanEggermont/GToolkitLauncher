@@ -10,7 +10,8 @@ Class {
 		'pane',
 		'gtButton',
 		'updater',
-		'versionLabel'
+		'versionLabel',
+		'model'
 	],
 	#category : #GToolkitLauncher
 }
@@ -21,43 +22,45 @@ GLGToolkitLauncher class >> open [
 ]
 
 { #category : #accessing }
+GLGToolkitLauncher >> checkAndDownloadAction [
+	^ [ model updater getLatestVersion.
+	versionLabel text: model updater latestVersion asString ]
+]
+
+{ #category : #accessing }
 GLGToolkitLauncher >> checkButton [
 	^ BrButton new
-		margin:
-			(BlInsets
+		margin: (BlInsets
 				top: 10
 				left: 10
 				bottom: 10
 				right: 0);
 		label: 'Check & Download Update';
-		aptitude: (GLGButtonAptitude new left);
+		aptitude: GLGButtonAptitude new left;
 		icon: BrGlamorousVectorIcons play;
-		action: [ 
-			updater getLatestVersion.
-			versionLabel text: updater latestVersion asString ];
+		action: self checkAndDownloadAction;
 		yourself
 ]
 
 { #category : #accessing }
 GLGToolkitLauncher >> gtButton [
 	gtButton := BrButton new
-		margin:
-			(BlInsets
-				top: 10
-				left: 0
-				bottom: 10
-				right: 0);
-		label: 'Open Development Environment';
-		aptitude: (GLGButtonAptitude new right) ;
-		icon: BrGlamorousVectorIcons gt;
-		action: [ GtWorld openDefault ];
-		yourself.
-	^gtButton
+			margin: (BlInsets
+					top: 10
+					left: 0
+					bottom: 10
+					right: 0);
+			label: 'Open Development Environment';
+			aptitude: GLGButtonAptitude new right;
+			icon: BrGlamorousVectorIcons gt;
+			action: self openDevelopmentEnvironmentAction;
+			yourself.
+	^ gtButton
 ]
 
 { #category : #accessing }
 GLGToolkitLauncher >> initialize [
-	updater := GLGToolkitUpdater new
+	model := GLGLauncherModel new
 ]
 
 { #category : #accessing }
@@ -81,6 +84,11 @@ GLGToolkitLauncher >> open [
 	space extent: 800@600.
 	space title: 'GToolkit Launcher'.
 	space show
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> openDevelopmentEnvironmentAction [
+	^ [ GtWorld openDefault ]
 ]
 
 { #category : #accessing }
@@ -114,7 +122,7 @@ GLGToolkitLauncher >> versionLabel [
 	versionLabel := BrLabel new
 		aptitude: BrGlamorousLabelAptitude;
 		padding: (BlInsets left: 2);
-		text: '';
+		text: model updater latestVersion;
 		yourself.
 	^versionLabel
 ]

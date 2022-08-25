@@ -3,10 +3,18 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'lastUpdated',
-		'latestVersion'
+		'latestVersion',
+		'model'
 	],
 	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
+
+{ #category : #accessing }
+GLGToolkitUpdater class >> on: aLauncherModel [
+	^self new
+		model: aLauncherModel;
+		yourself
+]
 
 { #category : #accessing }
 GLGToolkitUpdater >> getLatestVersion [
@@ -24,4 +32,9 @@ GLGToolkitUpdater >> lastUpdated [
 { #category : #accessing }
 GLGToolkitUpdater >> latestVersion [
 	^latestVersion
+]
+
+{ #category : #accessing }
+GLGToolkitUpdater >> model: aLauncherModel [ 
+	model := aLauncherModel
 ]
