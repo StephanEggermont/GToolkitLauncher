@@ -19,6 +19,12 @@ GLGLauncherModel >> localEnvironment [
 	^localEnvironment
 ]
 
+{ #category : #'as yet unclassified' }
+GLGLauncherModel >> releases [
+	^(localEnvironment releasesPath asFileReference directories) collect: [:path |
+	GLGRelease onPath: path]
+]
+
 { #category : #accessing }
 GLGLauncherModel >> updater [
 	^updater 

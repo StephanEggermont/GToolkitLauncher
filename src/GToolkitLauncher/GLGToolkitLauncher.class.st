@@ -22,6 +22,12 @@ GLGToolkitLauncher class >> open [
 ]
 
 { #category : #accessing }
+GLGToolkitLauncher >> addReleases [
+	model releases do: [:release | 
+	pane addChild: (GLGReleaseCard new release: release; yourself)].
+]
+
+{ #category : #accessing }
 GLGToolkitLauncher >> checkAndDownloadAction [
 	^ [ model updater getLatestVersion.
 	versionLabel text: model updater latestVersion asString ]
@@ -97,8 +103,9 @@ GLGToolkitLauncher >> pane [
 		size: 800@600;
 		background: Color lightGray muchLighter lighter;
 		padding: (BlInsets all: 2);
-		layout: BlLinearLayout horizontal;
+		layout: BlFlowLayout horizontal;
 		yourself.
+	self addReleases.
 	^pane
 ]
 
