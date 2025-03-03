@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-02-05T12:48:21.818458+01:00"
+						"dateAndTimeString" : "2025-03-03T12:19:08.123499+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,75 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The launcher by default does not show GT. The check and download buttonchecks if there is a new version"
+				"string" : "The launcher by default does not show GT. The check and download buttonchecks if there is a new version. If there is one, it is downloaded"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-03T12:19:59.155395+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-03T12:20:20.203057+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "/7LYEtDrDQCCVY3oAiz/3w=="
+				},
+				"code" : "GLGToolkitLauncher open"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-03T21:22:01.143317+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-03T21:22:25.899776+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "U9pOpdfrDQC0aI6EChsKjw=="
+				},
+				"code" : "GLGLauncherModel new releases"
 			}
 		]
 	},
