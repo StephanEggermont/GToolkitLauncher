@@ -1,6 +1,6 @@
-#Launcher for GToolkit
+# Launcher for GToolkit
 
-##Loading lepiter
+## Loading lepiter
   ```smalltalk
   BaselineOfGToolkitLauncher asClass loadLepiter
   ```
