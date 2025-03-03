@@ -23,7 +23,7 @@ GLGRelease >> gtCardOn: aView [
 GLGRelease >> lastChanged [
  	|imagePath|
 	imagePath := (path / 'GlamorousToolkit.image') asFileReference.
-	imagePath exists ifFalse: [^'N/A'] ifTrue: [^imagePath changeTime]
+	imagePath exists ifFalse: [^' N/A'] ifTrue: [^imagePath changeTime]
 ]
 
 { #category : #accessing }

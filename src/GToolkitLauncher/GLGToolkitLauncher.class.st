@@ -23,7 +23,7 @@ GLGToolkitLauncher class >> open [
 
 { #category : #accessing }
 GLGToolkitLauncher >> addReleases [
-	model releases do: [:release | 
+(	model releases sorted: [:a :b | a lastChanged asString > b lastChanged asString])do: [:release | 
 	pane addChild: (GLGReleaseCard new release: release; yourself)].
 ]
 
@@ -100,7 +100,9 @@ GLGToolkitLauncher >> openDevelopmentEnvironmentAction [
 { #category : #accessing }
 GLGToolkitLauncher >> pane [
 	pane := BlElement new
-		size: 800@600;
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical fitContent ];
 		background: Color lightGray muchLighter lighter;
 		padding: (BlInsets all: 2);
 		layout: BlFlowLayout horizontal;
