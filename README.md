@@ -4,7 +4,7 @@
 
 ```st
 Metacello new
-	repository: 'github://StephanEggermont/GToolkitLauncher:master/src';
+	repository: 'github://StephanEggermont/GToolkitLauncher:main/src';
 	baseline: 'GToolkitLauncher';
 	load
 ```
