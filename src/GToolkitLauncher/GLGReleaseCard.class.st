@@ -22,6 +22,13 @@ GLGReleaseCard >> initialize [
 				left: 2
 				bottom: 2
 				right: 2);
+		aptitude: (BrGlamorousWithContextMenuAptitude
+			handle: [ BlElement new
+					size: 2@2;
+					geometry: BlEllipseGeometry new ]
+			content: [ GLGReleaseCardEditor new
+				card: self;
+				requestFocus]);
 		addChild:
 			(BrLabel new
 				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
@@ -49,6 +56,11 @@ GLGReleaseCard >> release [
 GLGReleaseCard >> release: anObject [
 	release := anObject.
 	self updateContents.
+]
+
+{ #category : #'as yet unclassified' }
+GLGReleaseCard >> run [
+	release run
 ]
 
 { #category : #accessing }

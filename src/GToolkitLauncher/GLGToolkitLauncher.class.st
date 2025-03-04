@@ -77,7 +77,7 @@ GLGToolkitLauncher >> launcherView [
 			c vertical matchParent ];
 		layout: BlLinearLayout vertical;
 		addChild: self toolbar;
-		addChild: self pane;
+		addChild:  self pane;
 		yourself.
 	^launcherView
 ]

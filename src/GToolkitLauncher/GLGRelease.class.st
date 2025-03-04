@@ -2,7 +2,8 @@ Class {
 	#name : #GLGRelease,
 	#superclass : #Object,
 	#instVars : [
-		'path'
+		'path',
+		'model'
 	],
 	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
@@ -11,6 +12,14 @@ Class {
 GLGRelease class >> onPath: path [ 
 	^self new
 		path: path;
+		yourself
+]
+
+{ #category : #'as yet unclassified' }
+GLGRelease class >> onPath: path in: aModel [ 
+	^self new
+		path: path;
+		model: aModel;
 		yourself
 ]
 
@@ -26,6 +35,11 @@ GLGRelease >> lastChanged [
 	imagePath exists ifFalse: [^' N/A'] ifTrue: [^imagePath changeTime]
 ]
 
+{ #category : #'as yet unclassified' }
+GLGRelease >> model: aModel [ 
+	model := aModel
+]
+
 { #category : #accessing }
 GLGRelease >> path [
 	^ path
@@ -39,4 +53,9 @@ GLGRelease >> path: aPath [
 { #category : #'as yet unclassified' }
 GLGRelease >> releaseName [
 	^ path basename
+]
+
+{ #category : #'as yet unclassified' }
+GLGRelease >> run [
+	
 ]

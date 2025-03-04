@@ -22,7 +22,7 @@ GLGLauncherModel >> localEnvironment [
 { #category : #'as yet unclassified' }
 GLGLauncherModel >> releases [
 	^(localEnvironment releasesPath asFileReference directories) collect: [:path |
-	GLGRelease onPath: path]
+	GLGRelease onPath: path in: self]
 ]
 
 { #category : #accessing }
