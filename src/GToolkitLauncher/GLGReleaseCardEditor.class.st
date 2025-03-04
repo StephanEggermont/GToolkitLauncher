@@ -30,6 +30,15 @@ GLGReleaseCardEditor >> initialize [
 			beSmallSize;
 			aptitude: (BrGlamorousButtonWithLabelAptitude new);
 			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 0);
+			label: 'Show';
+			action: [ 
+				self fireEvent: BrDropdownHideWish new.
+				card showFolder ]).		
+	aContainer addChild: (
+			BrButton new
+			beSmallSize;
+			aptitude: (BrGlamorousButtonWithLabelAptitude new);
+			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 0);
 			label: 'Run';
 			action: [ 
 				self fireEvent: BrDropdownHideWish new.

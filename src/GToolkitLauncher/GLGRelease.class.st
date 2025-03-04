@@ -62,3 +62,8 @@ GLGRelease >> run [
 	 	GLGPlatform current runCommand.
 	LibC runCommand: command
 ]
+
+{ #category : #'as yet unclassified' }
+GLGRelease >> showFolder [
+	path inspect
+]

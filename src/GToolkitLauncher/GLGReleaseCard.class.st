@@ -63,6 +63,11 @@ GLGReleaseCard >> run [
 	release run
 ]
 
+{ #category : #'as yet unclassified' }
+GLGReleaseCard >> showFolder [
+	release showFolder
+]
+
 { #category : #accessing }
 GLGReleaseCard >> updateContents [
 	(self childAt: 1) text: release releaseName.
