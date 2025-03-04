@@ -57,5 +57,8 @@ GLGRelease >> releaseName [
 
 { #category : #'as yet unclassified' }
 GLGRelease >> run [
-	
+	|command|
+	command := 'cd "', self path fullName, '" && ',
+	 	GLGPlatform current runCommand.
+	LibC runCommand: command
 ]
