@@ -5,14 +5,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-BaselineOfGToolkitLauncher >> baseline: spec [
-	<baseline>
-	spec for: #common do: [ 
-		spec package: 'GToolkitLauncher'].
-]
-
-{ #category : #'as yet unclassified' }
-BaselineOfGToolkitLauncher >> loadLepiter [
+BaselineOfGToolkitLauncher class >> loadLepiter [
 	IceRepository registry  
 		detect: [ :aRepository |
 			aRepository name = 'GToolkitLauncher' ]
@@ -24,4 +17,11 @@ BaselineOfGToolkitLauncher >> loadLepiter [
 			defaultDatabase reload ]
 		ifNone: [
 			self inform: 'Repository not found.' ]
+]
+
+{ #category : #'as yet unclassified' }
+BaselineOfGToolkitLauncher >> baseline: spec [
+	<baseline>
+	spec for: #common do: [ 
+		spec package: 'GToolkitLauncher'].
 ]
