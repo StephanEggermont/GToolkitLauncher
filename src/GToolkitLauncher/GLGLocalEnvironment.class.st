@@ -32,6 +32,12 @@ GLGLocalEnvironment >> ensureDirectories [
 	self releasesPath asFileReference ensureCreateDirectory.
 ]
 
+{ #category : #'as yet unclassified' }
+GLGLocalEnvironment >> hasRelease: aVersionString [ 
+	^ (self releasesPath / aVersionString) asFileReference exists
+
+]
+
 { #category : #accessing }
 GLGLocalEnvironment >> model: aLauncherModel [ 
 	model := aLauncherModel

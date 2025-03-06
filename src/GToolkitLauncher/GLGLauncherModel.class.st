@@ -25,6 +25,13 @@ GLGLauncherModel >> releases [
 	GLGRelease onPath: path in: self]
 ]
 
+{ #category : #'as yet unclassified' }
+GLGLauncherModel >> run [ 
+	(localEnvironment hasRelease: updater latestVersion) ifFalse: [
+		updater getLatestVersion.
+		updater updateIn: localEnvironment]
+]
+
 { #category : #accessing }
 GLGLauncherModel >> updater [
 	^updater 

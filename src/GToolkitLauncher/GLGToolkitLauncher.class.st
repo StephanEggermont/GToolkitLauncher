@@ -30,7 +30,9 @@ GLGToolkitLauncher >> addReleases [
 { #category : #accessing }
 GLGToolkitLauncher >> checkAndDownloadAction [
 	^ [ model updater getLatestVersion.
-	versionLabel text: model updater latestVersion asString ]
+	versionLabel text: model updater latestVersion asString.
+	model run.
+	self updateReleases ]
 ]
 
 { #category : #accessing }
@@ -124,6 +126,12 @@ GLGToolkitLauncher >> toolbar [
 		addChild: self versionLabel;
 		yourself.
 	^toolbar
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> updateReleases [
+	pane removeChildren.
+	self addReleases
 ]
 
 { #category : #accessing }
