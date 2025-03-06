@@ -138,7 +138,7 @@ GLGToolkitLauncher >> updateReleases [
 GLGToolkitLauncher >> versionLabel [
 	versionLabel := BrLabel new
 		aptitude: BrGlamorousLabelAptitude;
-		padding: (BlInsets left: 2);
+		padding: (BlInsets top:10 left: 2);
 		text: model updater latestVersion;
 		yourself.
 	^versionLabel
