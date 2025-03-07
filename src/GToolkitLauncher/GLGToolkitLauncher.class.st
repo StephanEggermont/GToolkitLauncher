@@ -59,6 +59,7 @@ GLGToolkitLauncher >> gtButton [
 					bottom: 10
 					right: 0);
 			label: 'Open Development Environment';
+			disable;
 			aptitude: GLGButtonAptitude new right;
 			icon: BrGlamorousVectorIcons gt;
 			action: self openDevelopmentEnvironmentAction;

@@ -53,7 +53,7 @@ GLGToolkitUpdater >> lastUpdated [
 
 { #category : #accessing }
 GLGToolkitUpdater >> latestVersion [
-	^latestVersion
+	^latestVersion ifNil: ['Not checked']
 ]
 
 { #category : #accessing }
