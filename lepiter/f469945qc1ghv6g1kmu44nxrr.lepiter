@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-02-05T06:10:10.285633+01:00"
+						"dateAndTimeString" : "2025-03-07T12:44:57.451993+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development"
+				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development, so I might have a difficult time remembring which code is loaded where"
 			},
 			{
 				"__type" : "textSnippet",
@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-03T12:19:08.123499+01:00"
+						"dateAndTimeString" : "2025-03-07T12:40:20.429692+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The launcher by default does not show GT. The check and download buttonchecks if there is a new version. If there is one, it is downloaded"
+				"string" : "The launcher by default does not show GT [not implemented yet] . The check and download buttonchecks if there is a new version. If there is one, it is downloaded"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -111,6 +111,114 @@
 					"uidString" : "/7LYEtDrDQCCVY3oAiz/3w=="
 				},
 				"code" : "GLGToolkitLauncher open"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-07T12:43:25.394879+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-07T12:43:33.231546+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MLYH3iDsDQCMPiwGADHCaQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "###Where are these files located?"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-07T12:40:47.0852+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-07T12:43:41.257174+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xxiY1CDsDQCHcWDwADHCaQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "A default location of a gt directory in the home folder of the user, containing a folder downloads and a folder releases. This can be changed by setting the GTPATH environment variable"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-07T12:43:02.105995+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-07T12:43:48.121339+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "zVmk3CDsDQCLmXmFADHCaQ=="
+				},
+				"code" : "\t(OSEnvironment current at: 'GTPATH' ifAbsent: [FileLocator home / 'gt']) asPath"
 			}
 		]
 	},
