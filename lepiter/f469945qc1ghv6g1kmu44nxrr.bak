@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-07T12:44:41.286015+01:00"
+						"dateAndTimeString" : "2025-03-07T12:46:51.879658+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development, so I might have a duifficult time remem"
+				"string" : "Keeping up with the rapid pace of GToolkit development is a challenge with the default download process. Often several new versions of GToolkit are released per day ([[GLRelease]]). That is not always synchronized with the [[GLProject]] I'm working on.  Not all of them are in active development, so I might have a difficult time remembering which code is loaded where. This launcher shows a card for each release and the git repos loaded in it"
 			},
 			{
 				"__type" : "textSnippet",
