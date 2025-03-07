@@ -72,5 +72,6 @@ GLGReleaseCard >> showFolder [
 GLGReleaseCard >> updateContents [
 	(self childAt: 1) text: release releaseName.
 	(self childAt: 2) text: release lastChanged.
+	(self childAt: 3) text: release gitRepos
 
 ]

@@ -24,6 +24,17 @@ GLGRelease class >> onPath: path in: aModel [
 ]
 
 { #category : #'as yet unclassified' }
+GLGRelease >> gitRepos [
+ 	|reposPath|
+	reposPath := (path / 'pharo-local' / 'iceberg' ) asFileReference.
+	reposPath exists ifFalse: [^' N/A']
+	ifTrue: [^String streamContents: [:s |
+		reposPath directories do: [:authorDir |
+			authorDir directories do: [:repoDir |
+			s nextPutAll: (repoDir basename) ] separatedBy: [s crlf]]]]
+]
+
+{ #category : #'as yet unclassified' }
 GLGRelease >> gtCardOn: aView [
 
 ]
@@ -32,7 +43,7 @@ GLGRelease >> gtCardOn: aView [
 GLGRelease >> lastChanged [
  	|imagePath|
 	imagePath := (path / 'GlamorousToolkit.image') asFileReference.
-	imagePath exists ifFalse: [^' N/A'] ifTrue: [^imagePath changeTime]
+	imagePath exists ifFalse: [^' N/A'] ifTrue: [^imagePath changeTime asLocalStringYMDHM]
 ]
 
 { #category : #'as yet unclassified' }
