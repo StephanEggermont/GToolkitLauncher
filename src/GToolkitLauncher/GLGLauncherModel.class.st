@@ -11,6 +11,7 @@ Class {
 { #category : #accessing }
 GLGLauncherModel >> initialize [
 	localEnvironment := GLGLocalEnvironment on: self.
+	localEnvironment ensureDirectories.
 	updater := GLGToolkitUpdater on: self.
 ]
 
