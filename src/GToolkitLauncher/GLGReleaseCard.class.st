@@ -40,10 +40,14 @@ GLGReleaseCard >> initialize [
 				padding: (BlInsets left: 2);
 				text: '');
 		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+			(BrSimpleList new
+				aptitude: BrSimpleListAptitude new ;
+				itemStencil: [ BrLabel new 
+					hMatchParent beSmallSize 
+					aptitude: BrGlamorousLabelAptitude ];				
 				padding: (BlInsets left: 2);
-				text: '').
+				itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
+				items: #()).
 
 ]
 
@@ -72,6 +76,6 @@ GLGReleaseCard >> showFolder [
 GLGReleaseCard >> updateContents [
 	(self childAt: 1) text: release releaseName.
 	(self childAt: 2) text: release lastChanged.
-	(self childAt: 3) text: release gitRepos
+	(self childAt: 3) items: release gitRepos
 
 ]

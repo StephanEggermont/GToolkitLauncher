@@ -27,11 +27,11 @@ GLGRelease class >> onPath: path in: aModel [
 GLGRelease >> gitRepos [
  	|reposPath|
 	reposPath := (path / 'pharo-local' / 'iceberg' ) asFileReference.
-	reposPath exists ifFalse: [^' N/A']
-	ifTrue: [^String streamContents: [:s |
+	reposPath exists ifFalse: [^#(' N/A')]
+	ifTrue: [^Array streamContents: [:a |
 		reposPath directories do: [:authorDir |
 			authorDir directories do: [:repoDir |
-			s nextPutAll: (repoDir basename) ] separatedBy: [s crlf]]]]
+			a nextPut: ("authorDir basename, '/', "repoDir basename) ]]]]
 ]
 
 { #category : #'as yet unclassified' }
