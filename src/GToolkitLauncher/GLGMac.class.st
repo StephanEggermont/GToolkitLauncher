@@ -4,6 +4,11 @@ Class {
 	#category : #GToolkitLauncher
 }
 
+{ #category : #'as yet unclassified' }
+GLGMac >> moveCommand [
+	^'mv'
+]
+
 { #category : #accessing }
 GLGMac >> platformName [
 	^'OSX'

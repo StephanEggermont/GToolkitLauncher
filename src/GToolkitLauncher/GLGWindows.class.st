@@ -4,6 +4,11 @@ Class {
 	#category : #GToolkitLauncher
 }
 
+{ #category : #'as yet unclassified' }
+GLGWindows >> moveCommand [
+	^'move'
+]
+
 { #category : #accessing }
 GLGWindows >> platformName [
 	^'Win' 

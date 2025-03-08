@@ -21,6 +21,11 @@ GLGPlatform class >> reset [
 	current := nil
 ]
 
+{ #category : #'as yet unclassified' }
+GLGPlatform >> moveCommand [
+	self subclassResponsibility
+]
+
 { #category : #accessing }
 GLGPlatform >> platformName [
 	self subclassResponsibility

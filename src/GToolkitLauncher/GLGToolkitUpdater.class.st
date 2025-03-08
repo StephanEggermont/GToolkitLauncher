@@ -68,8 +68,10 @@ GLGToolkitUpdater >> model: aLauncherModel [
 
 { #category : #accessing }
 GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
-	| command |
-	command := 'mv "' ,( aLocalEnvironment downloadPath / zipName) fullName,'" "'
+	| command move|
+	(aLocalEnvironment releasesPath / latestVersion) asFileReference ensureCreateDirectory.
+	move := GLGPlatform current moveCommand.
+	command := move,' "' ,( aLocalEnvironment downloadPath / zipName) fullName,'" "'
 		, (aLocalEnvironment releasesPath / latestVersion) fullName
 		, '"'.
 	LibC runCommand: command.

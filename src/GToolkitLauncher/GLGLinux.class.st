@@ -4,6 +4,11 @@ Class {
 	#category : #GToolkitLauncher
 }
 
+{ #category : #'as yet unclassified' }
+GLGLinux >> moveCommand [
+	^'mv'
+]
+
 { #category : #accessing }
 GLGLinux >> platformName [
 	^'Linux'
