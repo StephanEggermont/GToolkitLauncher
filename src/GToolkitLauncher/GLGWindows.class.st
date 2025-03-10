@@ -16,5 +16,5 @@ GLGWindows >> platformName [
 
 { #category : #accessing }
 GLGWindows >> runCommand [
-	^'bin/GlamorousToolkit.exe'
+	^'start /b bin/GlamorousToolkit.exe'
 ]

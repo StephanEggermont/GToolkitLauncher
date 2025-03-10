@@ -29,9 +29,9 @@ GLGToolkitUpdater >> downloadUpdate: aLocalEnvironment [
 { #category : #accessing }
 GLGToolkitUpdater >> extractUpdate: aLocalEnvironment [
 	| command |
-	command := 'cd "' , aLocalEnvironment downloadPath fullName
+	command := 'cd "' , aLocalEnvironment downloadPath asFileReference pathString
 		, '" && unzip ', zipName, ' -d "'
-		, (aLocalEnvironment releasesPath / latestVersion) fullName
+		, (aLocalEnvironment releasesPath / latestVersion) asFileReference pathString
 		, '"'.
 	LibC runCommand: command.
 	^ command
@@ -71,8 +71,8 @@ GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
 	| command move|
 	(aLocalEnvironment releasesPath / latestVersion) asFileReference ensureCreateDirectory.
 	move := GLGPlatform current moveCommand.
-	command := move,' "' ,( aLocalEnvironment downloadPath / zipName) fullName,'" "'
-		, (aLocalEnvironment releasesPath / latestVersion) fullName
+	command := move,' "' ,( aLocalEnvironment downloadPath / zipName) asFileReference pathString,'" "'
+		, (aLocalEnvironment releasesPath / latestVersion) asFileReference pathString
 		, '"'.
 	LibC runCommand: command.
 	^ command
