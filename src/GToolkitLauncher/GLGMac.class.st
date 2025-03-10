@@ -16,5 +16,5 @@ GLGMac >> platformName [
 
 { #category : #accessing }
 GLGMac >> runCommand [
-	^'./GlamorousToolkit.app/Contents/MacOS/GlamorousToolkit GlamorousToolkit.image --no-quit --interactive &'
+	^'open ./GlamorousToolkit.app &'
 ]
