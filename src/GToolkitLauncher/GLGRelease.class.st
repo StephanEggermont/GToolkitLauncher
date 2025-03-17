@@ -10,13 +10,6 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-GLGRelease class >> onPath: path [ 
-	^self new
-		path: path;
-		yourself
-]
-
-{ #category : #'as yet unclassified' }
 GLGRelease class >> onPath: path in: aModel [ 
 	^self new
 		path: path;
