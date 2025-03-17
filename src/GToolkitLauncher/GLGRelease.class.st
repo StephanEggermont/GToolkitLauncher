@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'path',
-		'model'
+		'model',
+		'actualPath'
 	],
 	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
@@ -24,9 +25,15 @@ GLGRelease class >> onPath: path in: aModel [
 ]
 
 { #category : #'as yet unclassified' }
+GLGRelease >> actualPath [
+	"in old releases, the dircetory structure was different"
+	^actualPath
+]
+
+{ #category : #'as yet unclassified' }
 GLGRelease >> gitRepos [
  	|reposPath|
-	reposPath := (path / 'pharo-local' / 'iceberg' ) asFileReference.
+	reposPath := (actualPath / 'pharo-local' / 'iceberg' ) asFileReference.
 	reposPath exists ifFalse: [^#(' N/A')]
 	ifTrue: [^Array streamContents: [:a |
 		reposPath directories do: [:authorDir |
@@ -42,7 +49,7 @@ GLGRelease >> gtCardOn: aView [
 { #category : #'as yet unclassified' }
 GLGRelease >> lastChanged [
  	|imagePath|
-	imagePath := (path / 'GlamorousToolkit.image') asFileReference.
+	imagePath := (actualPath / 'GlamorousToolkit.image') asFileReference.
 	imagePath exists ifFalse: [^' N/A'] ifTrue: [^imagePath changeTime asLocalStringYMDHM]
 ]
 
@@ -58,7 +65,13 @@ GLGRelease >> path [
 
 { #category : #'as yet unclassified' }
 GLGRelease >> path: aPath [ 
-	path := aPath
+	| version |
+	path := aPath.
+	version := path basename.
+	"In old releases, the directory structure was different.
+	There is then an extra subdirectory containing all data"
+	actualPath := (path / ('GlamorousToolkitLinux64-',version)).
+	(actualPath asFileReference exists) ifFalse: [actualPath := path].
 ]
 
 { #category : #'as yet unclassified' }
@@ -69,9 +82,15 @@ GLGRelease >> releaseName [
 { #category : #'as yet unclassified' }
 GLGRelease >> run [
 	|command|
-	command := 'cd "', self path asFileReference pathString, '" && ',
-	 	GLGPlatform current runCommand.
-	LibC runCommand: command
+	(path = actualPath) ifTrue: [
+		command := 'cd "', actualPath asFileReference pathString, '" && ',
+		 	GLGPlatform current runCommand.
+		] ifFalse: [
+		command := 'cd "', actualPath asFileReference pathString, '" && ',
+		actualPath asFileReference pathString,
+		 	GLGPlatform current oldRunCommand
+		].
+		LibC runCommand: command
 ]
 
 { #category : #'as yet unclassified' }

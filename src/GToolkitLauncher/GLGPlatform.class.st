@@ -26,6 +26,11 @@ GLGPlatform >> moveCommand [
 	self subclassResponsibility
 ]
 
+{ #category : #'as yet unclassified' }
+GLGPlatform >> oldRunCommand [
+	^'"/glamoroustoolkit" &'
+]
+
 { #category : #accessing }
 GLGPlatform >> platformName [
 	self subclassResponsibility
