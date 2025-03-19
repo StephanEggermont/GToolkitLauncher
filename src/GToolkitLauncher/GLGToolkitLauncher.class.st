@@ -23,6 +23,7 @@ GLGToolkitLauncher class >> open [
 
 { #category : #accessing }
 GLGToolkitLauncher >> addReleases [
+	model update.
 (	model releases sorted: [:a :b | a lastChanged asString > b lastChanged asString])do: [:release | 
 	pane addChild: (GLGReleaseCard new release: release; yourself)].
 ]

@@ -74,6 +74,7 @@ GLGRelease >> releaseName [
 
 { #category : #'as yet unclassified' }
 GLGRelease >> run [
+	model monitorRun: self.
 	GLGPlatform current runReleaseOn: actualPath.
 
 ]
