@@ -19,7 +19,7 @@ GLGRelease class >> onPath: path in: aModel [
 
 { #category : #'as yet unclassified' }
 GLGRelease >> actualPath [
-	"in old releases, the dircetory structure was different"
+	"in old releases, the directory structure was different"
 	^actualPath
 ]
 
@@ -74,16 +74,8 @@ GLGRelease >> releaseName [
 
 { #category : #'as yet unclassified' }
 GLGRelease >> run [
-	|command|
-	(path = actualPath) ifTrue: [
-		command := 'cd "', actualPath asFileReference pathString, '" && ',
-		 	GLGPlatform current runCommand.
-		] ifFalse: [
-		command := 'cd "', actualPath asFileReference pathString, '" && ',
-		actualPath asFileReference pathString,
-		 	GLGPlatform current oldRunCommand
-		].
-		LibC runCommand: command
+	GLGPlatform current runReleaseOn: actualPath.
+
 ]
 
 { #category : #'as yet unclassified' }

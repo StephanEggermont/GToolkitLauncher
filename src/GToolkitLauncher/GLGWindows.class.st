@@ -18,3 +18,10 @@ GLGWindows >> platformName [
 GLGWindows >> runCommand [
 	^'start /b bin/GlamorousToolkit.exe'
 ]
+
+{ #category : #'as yet unclassified' }
+GLGWindows >> runReleaseOn: aPath [
+|command|
+	command := 'cd "', aPath asFileReference pathString, '" && ',self runCommand.
+	LibC runCommand: command
+]

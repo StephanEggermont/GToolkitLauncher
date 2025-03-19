@@ -28,7 +28,7 @@ GLGPlatform >> moveCommand [
 
 { #category : #'as yet unclassified' }
 GLGPlatform >> oldRunCommand [
-	^'"/glamoroustoolkit" &'
+	^'/glamoroustoolkit" &'
 ]
 
 { #category : #accessing }
@@ -39,4 +39,12 @@ GLGPlatform >> platformName [
 { #category : #accessing }
 GLGPlatform >> runCommand [
 	self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
+GLGPlatform >> runReleaseOn: aPath [
+|command|
+	command := 'cd "', aPath asFileReference pathString, '" && "',
+		 aPath asFileReference pathString, self runCommand.
+	LibC runCommand: command
 ]
