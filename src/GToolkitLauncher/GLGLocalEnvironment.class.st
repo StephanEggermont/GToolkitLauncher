@@ -50,7 +50,7 @@ GLGLocalEnvironment >> releasesPath [
 
 { #category : #accessing }
 GLGLocalEnvironment >> rootPath [
-	^rootPath ifNil: [self defaultRootPath]
+	^rootPath ifNil: [rootPath := self defaultRootPath]
 ]
 
 { #category : #accessing }
