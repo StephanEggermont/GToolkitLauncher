@@ -32,7 +32,7 @@ GLGReleaseCardEditor >> initialize [
 			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 0);
 			label: 'Show';
 			action: [ 
-				self fireEvent: BrDropdownHideWish new.
+				self fireEvent: BrContextMenuHideWish new.
 				card showFolder ]).		
 	aContainer addChild: (
 			BrButton new
@@ -41,8 +41,8 @@ GLGReleaseCardEditor >> initialize [
 			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 0);
 			label: 'Run';
 			action: [ 
-				self fireEvent: BrDropdownHideWish new.
-				card run ]).	
+				self fireEvent: BrContextMenuHideWish new.
+				card run]).	
 	self addChild: (BrScrollPane new
 		aptitude: BrScrollPaneAptitude + BrGlamorousWithVerticalScrollbarAptitude;
 		vFitContentLimited;
