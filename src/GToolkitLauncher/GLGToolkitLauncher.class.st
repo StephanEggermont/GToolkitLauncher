@@ -93,6 +93,14 @@ GLGToolkitLauncher >> open [
 	space addChild: self launcherView.
 	space extent: 800@600.
 	space title: 'GToolkit Launcher'.
+	space
+	addEventHandlerOn: BlSpaceClosedEvent
+		do: [ 
+			model monitor stop.
+			model monitor: nil.
+			model := nil
+		 ].
+
 	space show
 ]
 

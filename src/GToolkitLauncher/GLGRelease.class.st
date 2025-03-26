@@ -35,11 +35,6 @@ GLGRelease >> gitRepos [
 ]
 
 { #category : #'as yet unclassified' }
-GLGRelease >> gtCardOn: aView [
-
-]
-
-{ #category : #'as yet unclassified' }
 GLGRelease >> lastChanged [
  	|imagePath|
 	imagePath := (actualPath / 'GlamorousToolkit.image') asFileReference.

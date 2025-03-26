@@ -29,6 +29,16 @@ GLGLauncherModel >> localEnvironment [
 	^localEnvironment
 ]
 
+{ #category : #accessing }
+GLGLauncherModel >> monitor [
+	^ monitor
+]
+
+{ #category : #accessing }
+GLGLauncherModel >> monitor: anObject [
+	monitor := anObject
+]
+
 { #category : #'as yet unclassified' }
 GLGLauncherModel >> monitorRun: aRelease [
 	monitor run: aRelease
