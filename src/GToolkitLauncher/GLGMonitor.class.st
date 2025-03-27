@@ -61,7 +61,6 @@ GLGMonitor >> model: aModel [
 
 { #category : #'as yet unclassified' }
 GLGMonitor >> run: aRelease [
-	runningProcesses add: aRelease.
 	self isRunning ifFalse: self start
 ]
 

@@ -47,7 +47,12 @@ GLGReleaseCard >> initialize [
 					aptitude: BrGlamorousLabelAptitude ];				
 				padding: (BlInsets left: 2);
 				itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
-				items: #()).
+				items: #());
+		addChild:
+			(BrLabel new
+				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+				padding: (BlInsets left: 2);
+				text: '')
 
 ]
 
@@ -77,7 +82,8 @@ GLGReleaseCard >> showFolder [
 { #category : #'as yet unclassified' }
 GLGReleaseCard >> update: aReleaseRunState [
 	 (aReleaseRunState version matches: '*',release releaseName,'*') ifTrue: [
-	 	self background: Color random].
+	 	self background: Color random.
+	 	(self childAt: 4) text: aReleaseRunState pid].
 	 
 ]
 
