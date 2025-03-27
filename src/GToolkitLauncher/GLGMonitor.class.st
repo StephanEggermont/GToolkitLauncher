@@ -80,9 +80,9 @@ GLGMonitor >> runPs [
 GLGMonitor >> start [
 	self isRunning ifTrue: [^self].
 	process := 
-	[ [interval seconds wait.
-		self runPs.
-		self markRunning] repeat
+	[ [ self runPs.
+		self markRunning.
+		interval seconds wait.] repeat
 	] forkAt: Processor userBackgroundPriority named: self class name
 ]
 

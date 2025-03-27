@@ -52,4 +52,5 @@ GLGReleaseCardEditor >> initialize [
 
 { #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> updateContents [
+	(card background = Color green) ifTrue: [((self childAt: 1) childAt: 2) disable]
 ]
