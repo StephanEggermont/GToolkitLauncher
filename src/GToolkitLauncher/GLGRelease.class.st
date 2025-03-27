@@ -41,6 +41,11 @@ GLGRelease >> lastChanged [
 	imagePath exists ifFalse: [^' N/A'] ifTrue: [^imagePath changeTime asLocalStringYMDHM]
 ]
 
+{ #category : #accessing }
+GLGRelease >> model [
+	^ model
+]
+
 { #category : #'as yet unclassified' }
 GLGRelease >> model: aModel [ 
 	model := aModel

@@ -7,7 +7,8 @@ Class {
 		'state',
 		'psLines',
 		'process',
-		'interval'
+		'interval',
+		'announcer'
 	],
 	#category : #GToolkitLauncher
 }
@@ -20,6 +21,11 @@ GLGMonitor class >> on: aModel [
 ]
 
 { #category : #'as yet unclassified' }
+GLGMonitor >> announcer [
+	^announcer
+]
+
+{ #category : #'as yet unclassified' }
 GLGMonitor >> defaultInterval [
 	^10 "seconds".
 ]
@@ -27,7 +33,8 @@ GLGMonitor >> defaultInterval [
 { #category : #'as yet unclassified' }
 GLGMonitor >> initialize [ 
 	runningProcesses := OrderedCollection new.
-	interval := self defaultInterval
+	interval := self defaultInterval.
+	announcer := Announcer new
 
 ]
 
@@ -74,5 +81,7 @@ GLGMonitor >> stop [
 	process ifNotNil: [
 		process terminate.
 		process := nil.
-	 ]
+	 ].
+	self announcer
+		ifNotNil: [ :anAnnouncer | anAnnouncer subscriptions reset ]
 ]
