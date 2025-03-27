@@ -44,6 +44,11 @@ GLPSResult class >> on: aLine [
 	^result
 ]
 
+{ #category : #'as yet unclassified' }
+GLPSResult >> = aPSResult [
+	^self pid = aPSResult pid
+]
+
 { #category : #accessing }
 GLPSResult >> command [
 	^ command
@@ -52,6 +57,11 @@ GLPSResult >> command [
 { #category : #accessing }
 GLPSResult >> command: anObject [
 	command := anObject
+]
+
+{ #category : #'as yet unclassified' }
+GLPSResult >> hash [
+	^self pid hash
 ]
 
 { #category : #accessing }

@@ -82,8 +82,13 @@ GLGReleaseCard >> showFolder [
 { #category : #'as yet unclassified' }
 GLGReleaseCard >> update: aReleaseRunState [
 	 (aReleaseRunState version matches: '*',release releaseName,'*') ifTrue: [
-	 	self background: Color random.
-	 	(self childAt: 4) text: aReleaseRunState pid].
+	 	aReleaseRunState state = #running ifTrue: [
+	 		self background: Color random.
+	 		(self childAt: 4) text: aReleaseRunState pid] 
+	 	ifFalse: [
+	 		 self background: Color lightGray muchLighter.
+	 		(self childAt: 4) text: '']
+	 	].
 	 
 ]
 

@@ -47,10 +47,17 @@ GLGMonitor >> isRunning [
 { #category : #'as yet unclassified' }
 GLGMonitor >> markRunning [
 	oldRunningProcesses := runningProcesses.
-	runningProcesses := psLines select: [:each | each command matches: '*/gt/releases/*'].
+	runningProcesses := (psLines select: [:each | each command matches: '*/gt/releases/*']) asOrderedCollection.
+	oldRunningProcesses removeAllFoundIn: runningProcesses.
 	runningProcesses do: [:psr | self announcer announce: (ReleaseRunStateChange new 
 		pid: psr pid; 
 		version: psr command; 
+		state: #running;
+		yourself)].
+	oldRunningProcesses do: [:psr | self announcer announce: (ReleaseRunStateChange new 
+		pid: psr pid; 
+		version: psr command; 
+		state: #stopped;
 		yourself)].
 ]
 
