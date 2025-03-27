@@ -76,7 +76,9 @@ GLGReleaseCard >> showFolder [
 
 { #category : #'as yet unclassified' }
 GLGReleaseCard >> update: aReleaseRunState [
-	 aReleaseRunState inspect
+	 (aReleaseRunState version matches: '*',release releaseName,'*') ifTrue: [
+	 	self background: Color random].
+	 
 ]
 
 { #category : #accessing }

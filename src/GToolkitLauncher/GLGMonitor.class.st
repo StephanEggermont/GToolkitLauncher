@@ -8,7 +8,8 @@ Class {
 		'psLines',
 		'process',
 		'interval',
-		'announcer'
+		'announcer',
+		'oldRunningProcesses'
 	],
 	#category : #GToolkitLauncher
 }
@@ -32,10 +33,10 @@ GLGMonitor >> defaultInterval [
 
 { #category : #'as yet unclassified' }
 GLGMonitor >> initialize [ 
+	oldRunningProcesses := OrderedCollection new.
 	runningProcesses := OrderedCollection new.
 	interval := self defaultInterval.
 	announcer := Announcer new
-
 ]
 
 { #category : #'as yet unclassified' }
@@ -45,9 +46,12 @@ GLGMonitor >> isRunning [
 
 { #category : #'as yet unclassified' }
 GLGMonitor >> markRunning [
-	|toBeDeleted|
-	toBeDeleted := OrderedCollection new.
-
+	oldRunningProcesses := runningProcesses.
+	runningProcesses := psLines select: [:each | each command matches: '*/gt/releases/*'].
+	runningProcesses do: [:psr | self announcer announce: (ReleaseRunStateChange new 
+		pid: psr pid; 
+		version: psr command; 
+		yourself)].
 ]
 
 { #category : #accessing }
