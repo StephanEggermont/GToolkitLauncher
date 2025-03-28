@@ -12,8 +12,9 @@ GLGReleaseCard >> initialize [
 	super initialize.
 	self
 		size: 120 @ 90;
+		geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
 		background: Color lightGray muchLighter;
-		border: (BlBorder paint: Color lightGray muchLighter width: 1);
+		border: (BlBorder paint: Color lightGray lighter width: 1);
 		layout: BlLinearLayout vertical;
 		margin: (BlInsets all: 6);
 		padding:
