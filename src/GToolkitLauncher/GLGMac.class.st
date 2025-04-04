@@ -16,12 +16,12 @@ GLGMac >> platformName [
 
 { #category : #accessing }
 GLGMac >> runCommand [
-	^'open ./GlamorousToolkit.app &'
+	^'/GlamorousToolkit.app &'
 ]
 
 { #category : #'as yet unclassified' }
 GLGMac >> runReleaseOn: aPath [
 |command|
-	command := 'cd "', aPath asFileReference pathString, '" && ',self runCommand.
+	command := 'cd "', aPath asFileReference pathString, '" && open ',aPath asFileReference pathString,self runCommand.
 	LibC runCommand: command
 ]
