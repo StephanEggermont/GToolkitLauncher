@@ -11,7 +11,7 @@ GLGLinux >> moveCommand [
 
 { #category : #accessing }
 GLGLinux >> platformName [
-	^'Linux'
+	^'Linux64'
 ]
 
 { #category : #accessing }

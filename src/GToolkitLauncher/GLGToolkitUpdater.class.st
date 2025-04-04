@@ -80,7 +80,7 @@ GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
 
 { #category : #accessing }
 GLGToolkitUpdater >> updateIn: aLocalEnvironment [
-	zipName := 'GlamorousToolkit', GLGPlatform current platformName, '64-release.zip'. 
+	zipName := 'GlamorousToolkit', GLGPlatform current platformName, '-release.zip'. 
 	self downloadUpdate: aLocalEnvironment.
 	self extractUpdate: aLocalEnvironment.
 	self moveDownloadedZip: aLocalEnvironment

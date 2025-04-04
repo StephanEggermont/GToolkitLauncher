@@ -11,7 +11,7 @@ GLGWindows >> moveCommand [
 
 { #category : #accessing }
 GLGWindows >> platformName [
-	^'Win' 
+	^'Win64' 
 ]
 
 { #category : #accessing }

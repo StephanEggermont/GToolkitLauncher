@@ -11,7 +11,7 @@ GLGMac >> moveCommand [
 
 { #category : #accessing }
 GLGMac >> platformName [
-	^'OSX'
+	^'OSXM1'
 ]
 
 { #category : #accessing }
