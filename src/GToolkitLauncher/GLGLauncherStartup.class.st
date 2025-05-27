@@ -8,6 +8,7 @@ Class {
 GLGLauncherStartup class >> initialize [
 	SessionManager default addDeferredStartupAction: [
 		GLGToolkitLauncher allInstances do: [:aLauncher |
-			aLauncher pane ifNotNil: [:pa | pa isVisible ifTrue: [aLauncher updateReleases]]]
+			aLauncher model ifNotNil: [
+			aLauncher pane ifNotNil: [:pa | pa isVisible ifTrue: [aLauncher updateReleases]]]]
 	]
 ]

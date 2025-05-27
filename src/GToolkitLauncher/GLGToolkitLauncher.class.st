@@ -87,6 +87,16 @@ GLGToolkitLauncher >> launcherView [
 ]
 
 { #category : #accessing }
+GLGToolkitLauncher >> model [
+	^ model
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> model: anObject [
+	^ model := anObject
+]
+
+{ #category : #accessing }
 GLGToolkitLauncher >> open [
 	|space|
 	space := BlSpace new.
