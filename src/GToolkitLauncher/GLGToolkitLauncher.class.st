@@ -110,6 +110,7 @@ GLGToolkitLauncher >> open [
 			model monitor: nil.
 			model := nil
 		 ].
+	model monitor announcer when: ReleasesChanged send: #updateReleases to: self.
 
 	space show
 ]
