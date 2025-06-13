@@ -15,6 +15,8 @@ GLGVisualizer >> colorForClass: aClass [
 	(aClass methods anySatisfy: [:m | m isAbstract]) ifTrue: [^Color blue].
 	(aClass superclass = TestCase ) ifTrue: [ ^Color orange ].
 	(aClass class includesSelector: #confluenceSetup)  ifTrue: [ ^Color cyan ].
+	(aClass allSuperclasses includes: BlElement) ifTrue: [^Color green muchDarker].
+	(aClass allSuperclasses includes: BrAptitude) ifTrue: [^Color yellow muchDarker].
 	^Color black
 ]
 
