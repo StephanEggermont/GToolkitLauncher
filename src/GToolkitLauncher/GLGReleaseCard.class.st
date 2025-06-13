@@ -17,44 +17,22 @@ GLGReleaseCard >> initialize [
 		border: (BlBorder paint: Color lightGray lighter width: 1);
 		layout: BlLinearLayout vertical;
 		margin: (BlInsets all: 6);
-		padding:
-			(BlInsets
+		padding: (BlInsets
 				top: 2
 				left: 2
 				bottom: 2
 				right: 2);
 		aptitude: (BrGlamorousWithContextMenuAptitude
-			handle: [ BlElement new
-					size: 2@2;
-					geometry: BlEllipseGeometry new ]
-			content: [ GLGReleaseCardEditor new
-				card: self;
-				requestFocus]);
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
-				padding: (BlInsets left: 2);
-				text: '');
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
-				padding: (BlInsets left: 2);
-				text: '');
-		addChild:
-			(BrSimpleList new
-				aptitude: BrSimpleListAptitude new ;
-				itemStencil: [ BrLabel new 
-					hMatchParent beSmallSize 
-					aptitude: BrGlamorousLabelAptitude ];				
-				padding: (BlInsets left: 2);
-				itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
-				items: #());
-		addChild:
-			(BrLabel new
-				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
-				padding: (BlInsets left: 2);
-				text: '')
-
+				handle: [ BlElement new
+						size: 2 @ 2;
+						geometry: BlEllipseGeometry new ]
+				content: [ GLGReleaseCardEditor new
+						card: self;
+						requestFocus ]);
+		addChild: self simpleTextField;
+		addChild: self simpleTextField;
+		addChild: self simpleTextList;
+		addChild: self simpleTextField
 ]
 
 { #category : #accessing }
@@ -78,6 +56,24 @@ GLGReleaseCard >> run [
 { #category : #'as yet unclassified' }
 GLGReleaseCard >> showFolder [
 	release showFolder
+]
+
+{ #category : #'as yet unclassified' }
+GLGReleaseCard >> simpleTextField [
+	^ BrLabel new
+		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+		padding: (BlInsets left: 2);
+		text: ''
+]
+
+{ #category : #'as yet unclassified' }
+GLGReleaseCard >> simpleTextList [
+	^ BrSimpleList new
+		aptitude: BrSimpleListAptitude new;
+		itemStencil: [ BrLabel new hMatchParent beSmallSize aptitude: BrGlamorousLabelAptitude ];
+		padding: (BlInsets left: 2);
+		itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
+		items: #()
 ]
 
 { #category : #'as yet unclassified' }
