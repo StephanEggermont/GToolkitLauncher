@@ -71,8 +71,9 @@ GLGVisualizer >> packageViewIncluding: aClass [
 						border: (BlBorder paint: Color gray);
 						size: (5 max: 2* me linesOfCode) @ (5 max: 2* me numLiterals);
 						yourself  ];
-			with: ((cla methods) sorted: [ :a :b | a selector < b selector ]).
-			"view layout rectanglePack " ]] in: #default.
+					with: ((cla methods) sorted: [ :a :b | a selector < b selector ]).
+			"view layout rectanglePack " ].
+			view edges connectFrom: #superclass.] in: #default.
 	view layout rectanglePack.
 	^ view
 ]
