@@ -26,6 +26,7 @@ GLGVisualizer >> colorForMethod: aCompiledMethod [
 	aCompiledMethod isTestMethod ifTrue: [ ^Color orange ].
 	(aCompiledMethod referencedClasses includes: GtMondrian) ifTrue: [ ^Color cyan ].
 	aCompiledMethod isGTExampleMethod ifTrue: [ ^Color lightOrange  ].
+	(aCompiledMethod hasPragmaNamed: #gtView) ifTrue: [^Color purple muchLighter].
 	(self isAccessor: aCompiledMethod) ifTrue: [ ^Color blue ].
 	^Color green
 ]
