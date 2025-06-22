@@ -22,6 +22,7 @@ GLGVisualizer >> colorForClass: aClass [
 
 { #category : #'as yet unclassified' }
 GLGVisualizer >> colorForMethod: aCompiledMethod [
+	aCompiledMethod isFromTrait ifTrue: [^Color brown].
 	aCompiledMethod isAbstract ifTrue: [^Color yellow].
 	aCompiledMethod isTestMethod ifTrue: [ ^Color orange ].
 	(aCompiledMethod referencedClasses includes: GtMondrian) ifTrue: [ ^Color cyan ].
@@ -71,10 +72,13 @@ GLGVisualizer >> packageViewIncluding: aClass [
 				forEach: [:cla | view nodes 
 					shape: [ :me | BlElement new 
 						background: (self colorForMethod: me);
-						border: (BlBorder paint: Color gray);
+						border: (me isClassSide ifFalse: [ 
+							(BlBorder paint: Color gray)] 
+						ifTrue: [ 
+							(BlBorder paint: Color red)]);
 						size: (5 max: 2* me linesOfCode) @ (5 max: 2* me numLiterals);
 						yourself  ];
-					with: ((cla methods) sorted: [ :a :b | a selector < b selector ]).
+					with: ((cla methods, cla class methods) sorted: [ :a :b | a selector < b selector ]).
 			"view layout rectanglePack " ].
 			view edges connectFrom: #superclass.] in: #default.
 	view layout rectanglePack.
