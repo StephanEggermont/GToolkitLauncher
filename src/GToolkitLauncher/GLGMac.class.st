@@ -11,7 +11,9 @@ GLGMac >> moveCommand [
 
 { #category : #accessing }
 GLGMac >> platformName [
-	^'OSXM1'
+	OSPlatform current processorArchitecture = 'x86_64'
+		ifTrue: [ ^ 'OSX64' ]
+		ifFalse: [ ^ 'OSXM1' ]
 ]
 
 { #category : #accessing }
