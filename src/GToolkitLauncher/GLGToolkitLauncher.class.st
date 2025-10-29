@@ -30,15 +30,18 @@ GLGToolkitLauncher >> addReleases [
 
 { #category : #accessing }
 GLGToolkitLauncher >> checkAndDownloadAction [
-	^ [ model updater getLatestVersion.
-	versionLabel text: model updater latestVersion asString.
-	model run.
-	self updateReleases ]
+	^ [ :button |
+		button disable.
+		model updater getLatestVersion.
+		versionLabel text: model updater refreshString.
+		model run.
+		self updateReleases.
+		button enable ]
 ]
 
 { #category : #accessing }
 GLGToolkitLauncher >> checkButton [
-	^ BrButton new
+	^BrButton new
 		margin: (BlInsets
 				top: 10
 				left: 10
@@ -46,7 +49,7 @@ GLGToolkitLauncher >> checkButton [
 				right: 0);
 		label: 'Check & Download Update';
 		aptitude: GLGButtonAptitude new left;
-		icon: BrGlamorousVectorIcons play;
+		icon: BrGlamorousVectorIcons refresh;
 		action: self checkAndDownloadAction;
 		yourself
 ]

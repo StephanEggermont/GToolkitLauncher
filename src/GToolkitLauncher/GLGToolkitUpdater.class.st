@@ -78,6 +78,18 @@ GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
 	^ command
 ]
 
+{ #category : #'as yet unclassified' }
+GLGToolkitUpdater >> refreshString [
+	^String streamContents: [:s |
+		lastUpdated ifNil: [
+			s nextPutAll:'Not checked'] 
+		ifNotNil: [
+			s nextPutAll: lastUpdated asStringYMDHM].
+		s nextPutAll: ' - '.
+		s nextPutAll: latestVersion asString
+	]
+]
+
 { #category : #accessing }
 GLGToolkitUpdater >> updateIn: aLocalEnvironment [
 	zipName := 'GlamorousToolkit', GLGPlatform current platformName, '-release.zip'. 

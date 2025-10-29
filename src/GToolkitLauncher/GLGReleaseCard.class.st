@@ -70,7 +70,7 @@ GLGReleaseCard >> simpleTextField [
 GLGReleaseCard >> simpleTextList [
 	^ BrSimpleList new
 		aptitude: BrSimpleListAptitude new;
-		itemStencil: [ BrLabel new hMatchParent beSmallSize aptitude: BrGlamorousLabelAptitude ];
+		itemStencil: [ BrLabel new hMatchParent vFitContent beTinySize aptitude: BrGlamorousLabelAptitude ];
 		padding: (BlInsets left: 2);
 		itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
 		items: #()
