@@ -48,7 +48,6 @@ GLGReleaseCard >> release: anObject [
 
 { #category : #'as yet unclassified' }
 GLGReleaseCard >> run [
-	release model monitor announcer when: ReleaseRunStateChange send: #update: to: self.
 	release run.
 
 ]

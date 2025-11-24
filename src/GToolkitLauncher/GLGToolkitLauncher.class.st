@@ -24,6 +24,7 @@ GLGToolkitLauncher class >> open [
 { #category : #accessing }
 GLGToolkitLauncher >> addReleases [
 	model update.
+	self startMonitor.
 (	model releases sorted: [:a :b | a lastChanged asString > b lastChanged asString])do: [:release | 
 	pane addChild: (GLGReleaseCard new release: release; yourself)].
 ]
@@ -96,7 +97,8 @@ GLGToolkitLauncher >> model [
 
 { #category : #accessing }
 GLGToolkitLauncher >> model: anObject [
-	^ model := anObject
+	model := anObject.
+
 ]
 
 { #category : #accessing }
@@ -138,6 +140,13 @@ GLGToolkitLauncher >> pane [
 ]
 
 { #category : #accessing }
+GLGToolkitLauncher >> startMonitor [
+	model monitor stop.
+	model monitor start.
+	model monitor announcer when: ReleaseRunStateChange send: #updateRunningstate: to: self.
+]
+
+{ #category : #accessing }
 GLGToolkitLauncher >> toolbar [
 	toolbar := BlElement new
 		background: Color lightGray muchLighter;
@@ -155,7 +164,13 @@ GLGToolkitLauncher >> toolbar [
 { #category : #accessing }
 GLGToolkitLauncher >> updateReleases [
 	pane removeChildren.
-	self addReleases
+	self addReleases.
+	self startMonitor.
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> updateRunningstate: aReleaseRunState [
+	pane childrenDo: [:aCard | aCard update: aReleaseRunState] 
 ]
 
 { #category : #accessing }
