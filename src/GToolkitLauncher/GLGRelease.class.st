@@ -27,7 +27,16 @@ GLGRelease >> actualPath [
 GLGRelease >> gitRepos [
  	|reposPath|
 	reposPath := (actualPath / 'pharo-local' / 'iceberg' ) asFileReference.
-	reposPath exists ifFalse: [^#(' N/A')]
+	reposPath exists ifFalse: [
+		|otherPaths|
+		(actualPath / 'pharo-local') exists ifFalse: [^#(' N/A')].
+		otherPaths := (actualPath / 'pharo-local') directories reject: [:each|
+			#('lepiter' 'iceberg' 'ombu-sessions' 'package-cache' 'play-cache') 
+			includes: each basename].
+		otherPaths size = 0 ifTrue: [^#(' N/A')]
+		ifFalse: [^Array streamContents: [:a |
+			otherPaths do: [:repoDir |
+				 a nextPut: repoDir basename]]]]
 	ifTrue: [^Array streamContents: [:a |
 		reposPath directories do: [:authorDir |
 			authorDir directories do: [:repoDir |
