@@ -20,16 +20,20 @@ GLGReleaseCardEditor >> initialize [
 	
 	self hFitContent;
 		vFitContentLimited;
+		geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
 		padding: (BlInsets all: 3).
 		
 	aContainer := BrVerticalPane new
 		hFitContent;
-		vFitContentLimited.
+		vFitContentLimited;
+		geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
+		background: Color white;
+		border: (BlBorder paint: Color lightGray width: 1).
 	aContainer addChild: (
 			BrButton new
 			beSmallSize;
 			aptitude: (BrGlamorousButtonWithLabelAptitude new);
-			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 0);
+			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 5);
 			label: 'Show';
 			action: [ 
 				self fireEvent: BrContextMenuHideWish new.
@@ -38,7 +42,7 @@ GLGReleaseCardEditor >> initialize [
 			BrButton new
 			beSmallSize;
 			aptitude: (BrGlamorousButtonWithLabelAptitude new);
-			margin: (BlInsets top: 10 left: 5 bottom: 5 right: 0);
+			margin: (BlInsets top: 5 left: 5 bottom: 5 right: 5);
 			label: 'Run';
 			action: [ 
 				self fireEvent: BrContextMenuHideWish new.

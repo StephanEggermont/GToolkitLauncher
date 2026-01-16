@@ -58,7 +58,7 @@ GLGButtonAptitude >> initialize [
 	self add: BrGlamorousButtonLayoutAptitude new.
 	self add: BrGlamorousButtonExteriorAptitude new.
 	self add: BrGlamorousButtonIconAptitude new.
-	self add: BrGlamorousButtonWithLabelTooltipAptitude new
+	self add: BrGlamorousButtonWithLabelTooltipAptitude2 new
 ]
 
 { #category : #accessing }

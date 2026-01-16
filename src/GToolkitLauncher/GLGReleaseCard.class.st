@@ -22,7 +22,7 @@ GLGReleaseCard >> initialize [
 				left: 2
 				bottom: 2
 				right: 2);
-		aptitude: (BrGlamorousWithContextMenuAptitude
+		aptitude: (BrGlamorousWithExplicitContextMenuAptitude
 				handle: [ BlElement new
 						size: 2 @ 2;
 						geometry: BlEllipseGeometry new ]

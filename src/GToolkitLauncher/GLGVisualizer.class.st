@@ -22,6 +22,7 @@ GLGVisualizer >> colorForClass: aClass [
 
 { #category : #'as yet unclassified' }
 GLGVisualizer >> colorForMethod: aCompiledMethod [
+	(aCompiledMethod referencedClasses anySatisfy: [:c | c isDeprecated]) ifTrue:[^Color red].
 	aCompiledMethod isFromTrait ifTrue: [^Color brown].
 	aCompiledMethod isAbstract ifTrue: [^Color yellow].
 	aCompiledMethod isTestMethod ifTrue: [ ^Color orange ].
