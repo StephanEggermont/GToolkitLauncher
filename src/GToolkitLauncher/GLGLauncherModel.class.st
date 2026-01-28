@@ -5,10 +5,17 @@ Class {
 		'localEnvironment',
 		'updater',
 		'monitor',
-		'releases'
+		'releases',
+		'projects'
 	],
 	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
+
+{ #category : #'as yet unclassified' }
+GLGLauncherModel >> getProjects [
+	^(localEnvironment projectsPath asFileReference directories) collect: [:path |
+	GLGProject onPath: path in: self]
+]
 
 { #category : #'as yet unclassified' }
 GLGLauncherModel >> getReleases [
@@ -42,6 +49,11 @@ GLGLauncherModel >> monitor: anObject [
 { #category : #'as yet unclassified' }
 GLGLauncherModel >> monitorRun: aRelease [
 	monitor run: aRelease
+]
+
+{ #category : #'as yet unclassified' }
+GLGLauncherModel >> projects [
+	^projects ifNil: [projects := self getProjects]
 ]
 
 { #category : #'as yet unclassified' }

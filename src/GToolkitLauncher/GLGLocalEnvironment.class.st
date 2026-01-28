@@ -30,6 +30,7 @@ GLGLocalEnvironment >> ensureDirectories [
 	self rootPath asFileReference ensureCreateDirectory.
 	self downloadPath asFileReference ensureCreateDirectory.
 	self releasesPath asFileReference ensureCreateDirectory.
+	self projectsPath asFileReference ensureCreateDirectory.
 ]
 
 { #category : #'as yet unclassified' }
@@ -41,6 +42,11 @@ GLGLocalEnvironment >> hasRelease: aVersionString [
 { #category : #accessing }
 GLGLocalEnvironment >> model: aLauncherModel [ 
 	model := aLauncherModel
+]
+
+{ #category : #accessing }
+GLGLocalEnvironment >> projectsPath [
+	^self rootPath / 'projects'
 ]
 
 { #category : #accessing }
