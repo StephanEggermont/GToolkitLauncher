@@ -85,7 +85,7 @@ GLGToolkitLauncher >> launcherView [
 			c vertical matchParent ];
 		layout: BlLinearLayout vertical;
 		addChild: self toolbar;
-		addChild:  self pane;
+		addChild:  self tabBar;
 		yourself.
 	^launcherView
 ]
@@ -139,11 +139,40 @@ GLGToolkitLauncher >> pane [
 	^pane
 ]
 
+{ #category : #'as yet unclassified' }
+GLGToolkitLauncher >> projectsView [
+	projectsView := GLGProjectsView new.
+	projectsView background: Color green muchLighter lighter.
+
+	^projectsView
+]
+
 { #category : #accessing }
 GLGToolkitLauncher >> startMonitor [
 	model monitor stop.
 	model monitor start.
 	model monitor announcer when: ReleaseRunStateChange send: #updateRunningstate: to: self.
+]
+
+{ #category : #'as yet unclassified' }
+GLGToolkitLauncher >> tabBar [
+	| aTabGroup |
+	aTabGroup := BrTabGroup new.
+	aTabGroup aptitude: BrGlamorousTabGroupAptitude new.
+
+	aTabGroup
+		addTab: (BrTab new
+				aptitude: BrGlamorousTabAptitude new;
+				label: 'Releases';
+				stencil: [ self pane]).
+
+	aTabGroup
+		addTab: (BrTab new
+				aptitude: BrGlamorousTabAptitude new;
+				label: 'Projects';
+				stencil: [ self projectsView]).
+
+	^ aTabGroup
 ]
 
 { #category : #accessing }
