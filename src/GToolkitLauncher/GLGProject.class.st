@@ -48,6 +48,11 @@ GLGProject >> script: anObject [
 	script := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+GLGProject >> showFolder [
+	path inspect
+]
+
 { #category : #accessing }
 GLGProject >> title [
 	^ title

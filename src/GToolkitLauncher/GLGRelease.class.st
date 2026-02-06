@@ -44,6 +44,12 @@ GLGRelease >> gitRepos [
 ]
 
 { #category : #'as yet unclassified' }
+GLGRelease >> install [
+	GLGPlatform current installOn: actualPath.
+
+]
+
+{ #category : #'as yet unclassified' }
 GLGRelease >> lastChanged [
  	|imagePath|
 	imagePath := (actualPath / 'GlamorousToolkit.image') asFileReference.

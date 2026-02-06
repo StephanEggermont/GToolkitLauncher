@@ -23,6 +23,29 @@ GLGLauncherModel >> getReleases [
 	GLGRelease onPath: path in: self]
 ]
 
+{ #category : #'as yet unclassified' }
+GLGLauncherModel >> gtViewProjectsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Projects';
+		priority: 20;
+		items: (self projects sorted: #title descending);
+		column: 'Name' text: [ :each | each title ];
+		actionUpdateButton
+]
+
+{ #category : #'as yet unclassified' }
+GLGLauncherModel >> gtViewReleasesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Releases';
+		priority: 10;
+		items: (self releases sorted: #lastChanged descending);
+		column: 'Name' text: [ :each | each releaseName ];
+		column: 'Last changed' text: [ :each | each lastChanged ];
+		actionUpdateButton
+]
+
 { #category : #accessing }
 GLGLauncherModel >> initialize [
 	localEnvironment := GLGLocalEnvironment on: self.

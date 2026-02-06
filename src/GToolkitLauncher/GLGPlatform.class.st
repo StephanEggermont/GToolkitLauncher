@@ -22,6 +22,16 @@ GLGPlatform class >> reset [
 ]
 
 { #category : #'as yet unclassified' }
+GLGPlatform >> installFilePath: aPath [
+	^aPath asFileReference pathString, '/../../projects/analytics.st'
+]
+
+{ #category : #'as yet unclassified' }
+GLGPlatform >> installOn: aPath [
+	self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
 GLGPlatform >> moveCommand [
 	self subclassResponsibility
 ]

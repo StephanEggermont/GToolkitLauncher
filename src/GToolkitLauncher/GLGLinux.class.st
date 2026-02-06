@@ -5,6 +5,19 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GLGLinux >> installFilePath: aPath [
+	^aPath asFileReference pathString, '/../../projects/analytics.st'
+]
+
+{ #category : #'as yet unclassified' }
+GLGLinux >> installOn: aPath [
+	| command |
+	command := 'cd "', aPath asFileReference pathString, '" && "', 
+		aPath asFileReference pathString, '/bin/GlamorousToolkit-cli" *image st ',(self installFilePath: aPath),' --interactive --no-quit &'.
+	LibC runCommand: command
+]
+
+{ #category : #'as yet unclassified' }
 GLGLinux >> moveCommand [
 	^'mv'
 ]

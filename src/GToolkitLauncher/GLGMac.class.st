@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GLGMac >> installOn: aPath [
+	| command |
+	command := 'cd "', aPath asFileReference pathString, '" && open "', 
+		aPath asFileReference pathString, '/bin/GlamorousToolkit-cli" *image st ',(self installFilePath: aPath),' --interactive --no-quit &'.
+	LibC runCommand: command
+]
+
+{ #category : #'as yet unclassified' }
 GLGMac >> moveCommand [
 	^'mv'
 ]

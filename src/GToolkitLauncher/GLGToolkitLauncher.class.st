@@ -30,12 +30,40 @@ GLGToolkitLauncher >> addReleases [
 ]
 
 { #category : #accessing }
+GLGToolkitLauncher >> analyseButton [
+	^BrButton new
+		margin: (BlInsets
+				top: 10
+				left: 10
+				bottom: 10
+				right: 10);
+		label: 'Check new and install analyse';
+		aptitude: GLGButtonAptitude new separate;
+		icon: BrGlamorousVectorIcons target;
+		action: self checkAndDownloadAndInstallAction;
+		yourself
+]
+
+{ #category : #accessing }
 GLGToolkitLauncher >> checkAndDownloadAction [
 	^ [ :button |
 		button disable.
 		model updater getLatestVersion.
 		versionLabel text: model updater refreshString.
 		model run.
+		self updateReleases.
+		button enable ]
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> checkAndDownloadAndInstallAction [
+	^ [ :button |
+		button disable.
+		model updater getLatestVersion.
+		versionLabel text: model updater refreshString.
+		model run.
+		self updateReleases.
+		self installInLatest.
 		self updateReleases.
 		button enable ]
 ]
@@ -75,6 +103,13 @@ GLGToolkitLauncher >> gtButton [
 { #category : #accessing }
 GLGToolkitLauncher >> initialize [
 	model := GLGLauncherModel new
+]
+
+{ #category : #accessing }
+GLGToolkitLauncher >> installInLatest [
+	|release|
+	release := model releases detect: [:each | each releaseName = model updater latestVersion].
+	release install
 ]
 
 { #category : #accessing }
@@ -186,6 +221,7 @@ GLGToolkitLauncher >> toolbar [
 		addChild: self checkButton;
 		addChild: self gtButton;
 		addChild: self versionLabel;
+		addChild: self analyseButton;
 		yourself.
 	^toolbar
 ]

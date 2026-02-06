@@ -89,3 +89,13 @@ GLGButtonAptitude >> right [
 							bottomRight: cornerRadius)).
 
 ]
+
+{ #category : #accessing }
+GLGButtonAptitude >> separate [
+	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
+							topLeft: cornerRadius;
+							topRight: cornerRadius;
+							bottomLeft: cornerRadius;
+							bottomRight: cornerRadius)).
+
+]
