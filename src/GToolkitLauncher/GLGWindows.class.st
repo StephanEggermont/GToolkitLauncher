@@ -1,10 +1,11 @@
 Class {
-	#name : #GLGWindows,
-	#superclass : #GLGPlatform,
-	#category : #GToolkitLauncher
+	#name : 'GLGWindows',
+	#superclass : 'GLGPlatform',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> installOn: aPath [
 	| command |
 	command := 'cd "', aPath asFileReference pathString, '" && start /b"', 
@@ -12,22 +13,22 @@ GLGWindows >> installOn: aPath [
 	LibC runCommand: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> moveCommand [
 	^'move'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGWindows >> platformName [
 	^'Win64' 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGWindows >> runCommand [
 	^'start /b bin/GlamorousToolkit.exe'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> runReleaseOn: aPath [
 |command|
 	command := 'cd "', aPath asFileReference pathString, '" && ',self runCommand.

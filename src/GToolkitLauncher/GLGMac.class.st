@@ -1,10 +1,11 @@
 Class {
-	#name : #GLGMac,
-	#superclass : #GLGPlatform,
-	#category : #GToolkitLauncher
+	#name : 'GLGMac',
+	#superclass : 'GLGPlatform',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> installOn: aPath [
 	| command |
 	command := 'cd "', aPath asFileReference pathString, '" && open "', 
@@ -12,24 +13,24 @@ GLGMac >> installOn: aPath [
 	LibC runCommand: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> moveCommand [
 	^'mv'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGMac >> platformName [
 	OSPlatform current processorArchitecture = 'x86_64'
 		ifTrue: [ ^ 'OSX64' ]
 		ifFalse: [ ^ 'OSXM1' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGMac >> runCommand [
 	^'/GlamorousToolkit.app &'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> runReleaseOn: aPath [
 |command|
 	command := 'cd "', aPath asFileReference pathString, '" && open ',aPath asFileReference pathString,self runCommand.

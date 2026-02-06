@@ -1,6 +1,6 @@
 Class {
-	#name : #GLPSResult,
-	#superclass : #Object,
+	#name : 'GLPSResult',
+	#superclass : 'Object',
 	#instVars : [
 		'pid',
 		'pcpu',
@@ -14,10 +14,11 @@ Class {
 		'tty',
 		'user'
 	],
-	#category : #GToolkitLauncher
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLPSResult class >> on: aLine [
 	"parse result of ps aux. command could have extra spaces in the path"
 	| substrings substringStart colCount fields result|
@@ -44,122 +45,122 @@ GLPSResult class >> on: aLine [
 	^result
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLPSResult >> = aPSResult [
 	^self pid = aPSResult pid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> command [
 	^ command
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> command: anObject [
 	command := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLPSResult >> hash [
 	^self pid hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> pcpu [
 	^ pcpu
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> pcpu: anObject [
 	pcpu := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> pid [
 	^ pid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> pid: anObject [
 	pid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> pmem [
 	^ pmem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> pmem: anObject [
 	pmem := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> rss [
 	^ rss
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> rss: anObject [
 	rss := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> start [
 	^ start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> start: anObject [
 	start := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> stat [
 	^ stat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> stat: anObject [
 	stat := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> time [
 	^ time
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> time: anObject [
 	time := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> tty [
 	^ tty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> tty: anObject [
 	tty := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> user [
 	^ user
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> user: anObject [
 	user := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> vsz [
 	^ vsz
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLPSResult >> vsz: anObject [
 	vsz := anObject
 ]

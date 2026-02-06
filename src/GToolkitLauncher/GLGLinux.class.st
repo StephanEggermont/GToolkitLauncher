@@ -1,15 +1,16 @@
 Class {
-	#name : #GLGLinux,
-	#superclass : #GLGPlatform,
-	#category : #GToolkitLauncher
+	#name : 'GLGLinux',
+	#superclass : 'GLGPlatform',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> installFilePath: aPath [
 	^aPath asFileReference pathString, '/../../projects/analytics.st'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> installOn: aPath [
 	| command |
 	command := 'cd "', aPath asFileReference pathString, '" && "', 
@@ -17,22 +18,22 @@ GLGLinux >> installOn: aPath [
 	LibC runCommand: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> moveCommand [
 	^'mv'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLinux >> platformName [
 	^'Linux64'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLinux >> runCommand [
 	^'/bin/GlamorousToolkit" &'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> runReleaseOn: aPath [
 |command|
 	command := (aPath asFileReference pathString matches: '*GlamorousToolkitLinux64*') ifFalse: [

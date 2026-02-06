@@ -1,23 +1,25 @@
 Class {
-	#name : #GLGToolkitUpdater,
-	#superclass : #Object,
+	#name : 'GLGToolkitUpdater',
+	#superclass : 'Object',
 	#instVars : [
 		'lastUpdated',
 		'latestVersion',
 		'model',
 		'zipName'
 	],
-	#category : #'GToolkitLauncher-GToolkitLauncher'
+	#category : 'GToolkitLauncher-GToolkitLauncher',
+	#package : 'GToolkitLauncher',
+	#tag : 'GToolkitLauncher'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater class >> on: aLauncherModel [
 	^self new
 		model: aLauncherModel;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> downloadUpdate: aLocalEnvironment [
 	| downloadLink |
 	downloadLink := 'https://dl.feenk.com/gt/', zipName.
@@ -26,7 +28,7 @@ GLGToolkitUpdater >> downloadUpdate: aLocalEnvironment [
 		downloadTo: aLocalEnvironment downloadPath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> extractUpdate: aLocalEnvironment [
 	| command |
 	command := 'cd "' , aLocalEnvironment downloadPath asFileReference pathString
@@ -37,7 +39,7 @@ GLGToolkitUpdater >> extractUpdate: aLocalEnvironment [
 	^ command
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> getLatestVersion [
 	| foundVersion |
 	foundVersion := (STONJSON fromString: (ZnEasy get: self latestVersionLocation) contents)
@@ -46,27 +48,27 @@ GLGToolkitUpdater >> getLatestVersion [
 	latestVersion := foundVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> lastUpdated [
 	^lastUpdated 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> latestVersion [
 	^latestVersion ifNil: ['Not checked']
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> latestVersionLocation [
 	^ 'https://api.github.com/repos/feenkcom/gtoolkit/releases/latest'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> model: aLauncherModel [ 
 	model := aLauncherModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
 	| command move|
 	(aLocalEnvironment releasesPath / latestVersion) asFileReference ensureCreateDirectory.
@@ -78,7 +80,7 @@ GLGToolkitUpdater >> moveDownloadedZip: aLocalEnvironment [
 	^ command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGToolkitUpdater >> refreshString [
 	^String streamContents: [:s |
 		lastUpdated ifNil: [
@@ -90,7 +92,7 @@ GLGToolkitUpdater >> refreshString [
 	]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGToolkitUpdater >> updateIn: aLocalEnvironment [
 	zipName := 'GlamorousToolkit', GLGPlatform current platformName, '-release.zip'. 
 	self downloadUpdate: aLocalEnvironment.

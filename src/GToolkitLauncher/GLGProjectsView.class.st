@@ -1,5 +1,6 @@
 Class {
-	#name : #GLGProjectsView,
-	#superclass : #BlElement,
-	#category : #GToolkitLauncher
+	#name : 'GLGProjectsView',
+	#superclass : 'BlElement',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }

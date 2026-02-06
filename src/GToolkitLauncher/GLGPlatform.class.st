@@ -1,13 +1,14 @@
 Class {
-	#name : #GLGPlatform,
-	#superclass : #Object,
+	#name : 'GLGPlatform',
+	#superclass : 'Object',
 	#classInstVars : [
 		'current'
 	],
-	#category : #GToolkitLauncher
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGPlatform class >> current [
 	current ifNil: [
 		OSPlatform current family = 'MacOSX' ifTrue: [current := GLGMac new].
@@ -16,42 +17,42 @@ GLGPlatform class >> current [
 	^current 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGPlatform class >> reset [
 	current := nil
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGPlatform >> installFilePath: aPath [
 	^aPath asFileReference pathString, '/../../projects/analytics.st'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGPlatform >> installOn: aPath [
 	self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGPlatform >> moveCommand [
 	self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGPlatform >> oldRunCommand [
 	^'/glamoroustoolkit" &'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGPlatform >> platformName [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGPlatform >> runCommand [
 	self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGPlatform >> runReleaseOn: aPath [
 |command|
 	command := 'cd "', aPath asFileReference pathString, '" && "',

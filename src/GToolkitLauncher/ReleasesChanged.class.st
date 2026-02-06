@@ -1,5 +1,6 @@
 Class {
-	#name : #ReleasesChanged,
-	#superclass : #Announcement,
-	#category : #GToolkitLauncher
+	#name : 'ReleasesChanged',
+	#superclass : 'Announcement',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }

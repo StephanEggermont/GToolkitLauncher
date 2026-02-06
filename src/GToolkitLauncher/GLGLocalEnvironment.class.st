@@ -1,21 +1,22 @@
 Class {
-	#name : #GLGLocalEnvironment,
-	#superclass : #Object,
+	#name : 'GLGLocalEnvironment',
+	#superclass : 'Object',
 	#instVars : [
 		'rootPath',
 		'model'
 	],
-	#category : #GToolkitLauncher
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment class >> on: aLauncherModel [
 	^self new
 		model: aLauncherModel;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> analytics [
 	^'
 "I don''t need to track changes here, so we disable them"
@@ -51,24 +52,24 @@ Metacello new
 BlHost pickHost universe snapshot: true andQuit: true.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> defaultRootPath [
 	^(OSEnvironment current at: 'GTPATH' ifAbsent: [FileLocator home / 'gt']) asPath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> downloadPath [
 	^self rootPath / 'downloads'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> ensureAnalytics [
 	|projectFile|
 	projectFile := (self projectsPath asFileReference / 'analytics.st').
 	projectFile exists ifFalse: [projectFile writeStreamDo: [:s | s nextPutAll: self analytics]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> ensureDirectories [
 	self rootPath asFileReference ensureCreateDirectory.
 	self downloadPath asFileReference ensureCreateDirectory.
@@ -76,33 +77,33 @@ GLGLocalEnvironment >> ensureDirectories [
 	self projectsPath asFileReference ensureCreateDirectory.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLocalEnvironment >> hasRelease: aVersionString [ 
 	^ (self releasesPath / aVersionString) asFileReference exists
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> model: aLauncherModel [ 
 	model := aLauncherModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> projectsPath [
 	^self rootPath / 'projects'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> releasesPath [
 	^self rootPath / 'releases'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> rootPath [
 	^rootPath ifNil: [rootPath := self defaultRootPath]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLocalEnvironment >> rootPath: aPath [
 	rootPath := aPath
 ]

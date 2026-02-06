@@ -1,13 +1,14 @@
 Class {
-	#name : #GLGProjectCard,
-	#superclass : #BlElement,
+	#name : 'GLGProjectCard',
+	#superclass : 'BlElement',
 	#instVars : [
 		'project'
 	],
-	#category : #GToolkitLauncher
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGProjectCard >> initialize [
 	super initialize.
 	self
@@ -35,29 +36,29 @@ GLGProjectCard >> initialize [
 		addChild: self simpleTextField
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGProjectCard >> project [
 	^ project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGProjectCard >> project: anObject [
 	project := anObject.
 	self updateContents
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGProjectCard >> run [
 	project run.
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGProjectCard >> showFolder [
 	project showFolder
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGProjectCard >> simpleTextField [
 	^ BrLabel new
 		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
@@ -65,7 +66,7 @@ GLGProjectCard >> simpleTextField [
 		text: ''
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGProjectCard >> simpleTextList [
 	^ BrSimpleList new
 		aptitude: BrSimpleListAptitude new;
@@ -75,13 +76,13 @@ GLGProjectCard >> simpleTextList [
 		items: #()
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGProjectCard >> update: aReleaseRunState [
 
 	 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGProjectCard >> updateContents [
 	(self childAt: 1) text: release releaseName.
 	(self childAt: 2) text: release lastChanged.
