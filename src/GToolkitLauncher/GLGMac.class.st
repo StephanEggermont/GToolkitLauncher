@@ -8,8 +8,8 @@ Class {
 { #category : 'as yet unclassified' }
 GLGMac >> installOn: aPath [
 	| command |
-	command := 'cd "', aPath asFileReference pathString, '" && open "', 
-		aPath asFileReference pathString, '/bin/GlamorousToolkit-cli" *image st ',(self installFilePath: aPath),' --interactive --no-quit &'.
+	command := 'cd "', aPath asFileReference pathString, '" &&  "', 
+		aPath asFileReference pathString, '/GlamorousToolkit.app/Contents/MacOS/GlamorousToolkit-cli" *image -- st ',(self installFilePath: aPath),' --interactive --no-quit &'.
 	LibC runCommand: command
 ]
 
