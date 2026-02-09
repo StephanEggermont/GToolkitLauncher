@@ -38,7 +38,13 @@ Metacello new
 	repository: ''github://StephanEggermont/GitBlame:master/src'';
 	baseline: ''GitBlame'';
 	load.
+	
+	] ensure: [ EpMonitor current enable ].
 
+15 seconds wait. "workaround for lepiter not being loaded yet"
+EpMonitor current disable.
+
+[
 #BaselineOfGtRepositoryExploration asClass loadLepiter.
 
 #BaselineOfGtMicroPrints asClass loadLepiter.
