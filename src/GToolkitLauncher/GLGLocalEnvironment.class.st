@@ -23,6 +23,11 @@ GLGLocalEnvironment >> analytics [
 EpMonitor current disable.
 
 [
+| lepiterDir props |
+lepiterDir := (FileLocator imageDirectory / ''pharo-local'' / ''lepiter'') asFileReference.
+lepiterDir ensureCreateDirectory.
+props := LeDatabasesRegistry defaultLogicalDatabase properties.
+props localFile asFileReference exists ifFalse: [ props save ].
 
 Metacello new
 	repository: ''github://StephanEggermont/GtRepositoryExploration:master/src'';
@@ -39,12 +44,7 @@ Metacello new
 	baseline: ''GitBlame'';
 	load.
 	
-	] ensure: [ EpMonitor current enable ].
 
-15 seconds wait. "workaround for lepiter not being loaded yet"
-EpMonitor current disable.
-
-[
 #BaselineOfGtRepositoryExploration asClass loadLepiter.
 
 #BaselineOfGtMicroPrints asClass loadLepiter.
@@ -52,8 +52,6 @@ EpMonitor current disable.
 #BaselineOfGitBlame asClass loadLepiter.
 
 ] ensure: [ EpMonitor current enable ].
-
-15 seconds wait.
 
 BlHost pickHost universe snapshot: true andQuit: true.'
 ]
