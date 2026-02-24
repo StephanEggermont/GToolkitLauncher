@@ -3,6 +3,12 @@
 GToolkitLauncher lets you keep several versions of Glamorous Toolkit around, and run each of them with ease. A bit like `pyenv` for python, or [rustup](https://rust-lang.github.io/rustup/) for Rust.  
 
 ## Installation
+
+For Linux, MacOS (install-gtoolkit.sh) and Windows (install-gtoolkit.ps1) there are install scripts that
+download the latest version of Glamorous Toolkit and install GToolkitLauncher in it. 
+There is a detailed description of what the scripts do in INSTALL-EXPLAINED.MD
+
+## For an existing Glamorous Toolkit
 Install Glamorous Toolkit. On the 'start page', in _Local Knowledge Base_ choose 'Add new page'. Call it something like `Environment Setup`. Add a `Pharo` block, and copy this in:
 
 ```st
