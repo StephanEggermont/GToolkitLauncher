@@ -1,17 +1,16 @@
 Class {
-	#name : 'GLGProject',
-	#superclass : 'Object',
+	#name : #GLGProject,
+	#superclass : #Object,
 	#instVars : [
 		'path',
 		'model',
 		'script',
 		'title'
 	],
-	#category : 'GToolkitLauncher',
-	#package : 'GToolkitLauncher'
+	#category : 'GToolkitLauncher'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGProject class >> onPath: path in: aModel [ 
 	^self new
 		path: path;
@@ -19,47 +18,47 @@ GLGProject class >> onPath: path in: aModel [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> model [
 	^ model
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> model: anObject [
 	model := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> path [
 	^ path
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> path: anObject [
 	path := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> script [
 	^ script
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> script: anObject [
 	script := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGProject >> showFolder [
 	path inspect
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> title [
 	^ title
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProject >> title: anObject [
 	title := anObject
 ]

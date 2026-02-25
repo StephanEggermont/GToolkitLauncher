@@ -1,14 +1,13 @@
 Class {
-	#name : 'GLGReleaseCard',
-	#superclass : 'BlElement',
+	#name : #GLGReleaseCard,
+	#superclass : #BlElement,
 	#instVars : [
 		'release'
 	],
-	#category : 'GToolkitLauncher',
-	#package : 'GToolkitLauncher'
+	#category : 'GToolkitLauncher'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCard >> initialize [
 	super initialize.
 	self
@@ -36,29 +35,29 @@ GLGReleaseCard >> initialize [
 		addChild: self simpleTextField
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGReleaseCard >> release [
 	^ release
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGReleaseCard >> release: anObject [
 	release := anObject.
 	self updateContents.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCard >> run [
 	release run.
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCard >> showFolder [
 	release showFolder
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCard >> simpleTextField [
 	^ BrLabel new
 		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
@@ -66,7 +65,7 @@ GLGReleaseCard >> simpleTextField [
 		text: ''
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCard >> simpleTextList [
 	^ BrSimpleList new
 		aptitude: BrSimpleListAptitude new;
@@ -76,7 +75,7 @@ GLGReleaseCard >> simpleTextList [
 		items: #()
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCard >> update: aReleaseRunState [
 	 (aReleaseRunState version matches: '*',release releaseName,'*') ifTrue: [
 	 	aReleaseRunState state = #running ifTrue: [
@@ -89,7 +88,7 @@ GLGReleaseCard >> update: aReleaseRunState [
 	 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGReleaseCard >> updateContents [
 	(self childAt: 1) text: release releaseName.
 	(self childAt: 2) text: release lastChanged.
