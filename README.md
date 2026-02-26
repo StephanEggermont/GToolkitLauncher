@@ -6,7 +6,12 @@ GToolkitLauncher lets you keep several versions of Glamorous Toolkit around, and
 
 For Linux, MacOS (install-gtoolkit.sh) and Windows (install-gtoolkit.ps1) there are install scripts that
 download the latest version of Glamorous Toolkit and install GToolkitLauncher in it. 
-There is a detailed description of what the scripts do in INSTALL-EXPLAINED.MD
+There is a detailed description of what the scripts do in INSTALL-EXPLAINED.MD.
+On Windows, by default you are not allowed to run the script, that needs you to first run 
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
 ## For an existing Glamorous Toolkit
 Install Glamorous Toolkit. On the 'start page', in _Local Knowledge Base_ choose 'Add new page'. Call it something like `Environment Setup`. Add a `Pharo` block, and copy this in:
