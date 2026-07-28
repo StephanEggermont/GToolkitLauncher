@@ -1,38 +1,17 @@
 Class {
 	#name : #GLGReleaseCard,
-	#superclass : #BlElement,
+	#superclass : #GLGCard,
 	#instVars : [
 		'release'
 	],
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #'as yet unclassified' }
-GLGReleaseCard >> initialize [
-	super initialize.
-	self
-		size: 120 @ 90;
-		geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
-		background: Color lightGray muchLighter;
-		border: (BlBorder paint: Color lightGray lighter width: 1);
-		layout: BlLinearLayout vertical;
-		margin: (BlInsets all: 6);
-		padding: (BlInsets
-				top: 2
-				left: 2
-				bottom: 2
-				right: 2);
-		aptitude: (BrGlamorousWithExplicitContextMenuAptitude
-				handle: [ BlElement new
-						size: 2 @ 2;
-						geometry: BlEllipseGeometry new ]
-				content: [ GLGReleaseCardEditor new
-						card: self;
-						requestFocus ]);
-		addChild: self simpleTextField;
-		addChild: self simpleTextField;
-		addChild: self simpleTextList;
-		addChild: self simpleTextField
+GLGReleaseCard >> editor [
+	^ GLGReleaseCardEditor new
+		card: self;
+		requestFocus
 ]
 
 { #category : #accessing }
