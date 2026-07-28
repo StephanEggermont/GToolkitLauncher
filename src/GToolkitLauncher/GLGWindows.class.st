@@ -7,7 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 GLGWindows >> installOn: aPath [
 	| command |
-	command := 'cd "', aPath asFileReference pathString, '" && start /b"', 
+	command := (self cdCommandFor: aPath), 'start /b"',
 		aPath asFileReference pathString, '/bin/GlamorousToolkit-cli" *image st ',(self installFilePath: aPath),' --interactive --no-quit &'.
 	LibC runCommand: command
 ]
