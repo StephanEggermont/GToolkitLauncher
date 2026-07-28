@@ -153,8 +153,10 @@ GLGMonitor >> runPsWindows [
 		nullStdin;
 		output.
  
-	^ (anOutput stdout lines reject: [ :line | line trimBoth isEmpty ])
+	^ ((anOutput stdout lines collect: [ :line | line trimBoth ])
+		reject: [ :line | line isEmpty ])
 		collect: [ :line | self parseWindowsProcessLine: line ]
+
 
 ]
 
