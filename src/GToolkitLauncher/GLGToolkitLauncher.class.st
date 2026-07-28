@@ -141,18 +141,20 @@ GLGToolkitLauncher >> model: anObject [
 GLGToolkitLauncher >> open [
 	|space|
 	space := BlSpace new.
+	model monitor announcer
+		when: ReleaseRunStateChange send: #updateRunningstate: to: self;
+		when: ReleasesChanged send: #updateReleases to: self.
 	space addChild: self launcherView.
 	space extent: 800@600.
 	space title: 'GToolkit Launcher'.
 	space
 	addEventHandlerOn: BlSpaceClosedEvent
 		do: [ 
+			model monitor announcer unsubscribe: self.
 			model monitor stop.
 			model monitor: nil.
 			model := nil
 		 ].
-	model monitor announcer when: ReleasesChanged send: #updateReleases to: self.
-
 	space show
 ]
 
@@ -187,7 +189,6 @@ GLGToolkitLauncher >> projectsView [
 GLGToolkitLauncher >> startMonitor [
 	model monitor stop.
 	model monitor start.
-	model monitor announcer when: ReleaseRunStateChange send: #updateRunningstate: to: self.
 ]
 
 { #category : #'as yet unclassified' }

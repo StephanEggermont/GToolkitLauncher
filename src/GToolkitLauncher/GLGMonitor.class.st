@@ -11,7 +11,7 @@ Class {
 		'announcer',
 		'oldRunningProcesses'
 	],
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #accessing }
@@ -92,6 +92,4 @@ GLGMonitor >> stop [
 		process terminate.
 		process := nil.
 	 ].
-	self announcer
-		ifNotNil: [ :anAnnouncer | anAnnouncer subscriptions reset ]
 ]
