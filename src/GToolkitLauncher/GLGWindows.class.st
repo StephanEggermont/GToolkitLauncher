@@ -1,7 +1,7 @@
 Class {
 	#name : #GLGWindows,
 	#superclass : #GLGPlatform,
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #'as yet unclassified' }
@@ -29,7 +29,7 @@ GLGWindows >> runCommand [
 
 { #category : #'as yet unclassified' }
 GLGWindows >> runReleaseOn: aPath [
-|command|
-	command := 'cd "', aPath asFileReference pathString, '" && ',self runCommand.
+	|command|
+	command := (self cdCommandFor: aPath), self runCommand.
 	LibC runCommand: command
 ]

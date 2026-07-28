@@ -1,13 +1,8 @@
 Class {
 	#name : #GLGLinux,
 	#superclass : #GLGPlatform,
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
-
-{ #category : #'as yet unclassified' }
-GLGLinux >> installFilePath: aPath [
-	^aPath asFileReference pathString, '/../../projects/analytics.st'
-]
 
 { #category : #'as yet unclassified' }
 GLGLinux >> installOn: aPath [
@@ -34,11 +29,11 @@ GLGLinux >> runCommand [
 
 { #category : #'as yet unclassified' }
 GLGLinux >> runReleaseOn: aPath [
-|command|
-	command := (aPath asFileReference pathString matches: '*GlamorousToolkitLinux64*') ifFalse: [
-	'cd "', aPath asFileReference pathString, '" && "',
-		 aPath asFileReference pathString, self runCommand] ifTrue: [
-	'cd "', aPath asFileReference pathString, '" && "',
-		 aPath asFileReference pathString, self oldRunCommand].
+	| command runCmd |
+	runCmd := (aPath asFileReference pathString matches: '*GlamorousToolkitLinux64*')
+		ifTrue: [ self oldRunCommand ]
+		ifFalse: [ self runCommand ].
+	command := (self cdCommandFor: aPath), '"',
+		 aPath asFileReference pathString, runCmd.
 	LibC runCommand: command
 ]

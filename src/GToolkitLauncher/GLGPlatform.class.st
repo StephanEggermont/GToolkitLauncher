@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'current'
 	],
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #accessing }
@@ -19,6 +19,11 @@ GLGPlatform class >> current [
 { #category : #accessing }
 GLGPlatform class >> reset [
 	current := nil
+]
+
+{ #category : #'as yet unclassified' }
+GLGPlatform >> cdCommandFor: aPath [ 
+	^'cd "', aPath asFileReference pathString, '" && '
 ]
 
 { #category : #'as yet unclassified' }
@@ -54,7 +59,7 @@ GLGPlatform >> runCommand [
 { #category : #'as yet unclassified' }
 GLGPlatform >> runReleaseOn: aPath [
 |command|
-	command := 'cd "', aPath asFileReference pathString, '" && "',
-		 aPath asFileReference pathString, self runCommand.
+	command := (self cdCommandFor: aPath), '"',
+		aPath asFileReference pathString, self runCommand.
 	LibC runCommand: command
 ]
