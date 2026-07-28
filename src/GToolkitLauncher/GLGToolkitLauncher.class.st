@@ -186,7 +186,6 @@ GLGToolkitLauncher >> projectsView [
 
 { #category : #accessing }
 GLGToolkitLauncher >> startMonitor [
-	model monitor stop.
 	model monitor start.
 ]
 
@@ -231,7 +230,6 @@ GLGToolkitLauncher >> toolbar [
 GLGToolkitLauncher >> updateReleases [
 	pane removeChildren.
 	self addReleases.
-	self startMonitor.
 ]
 
 { #category : #accessing }
