@@ -36,9 +36,11 @@ GLGWindows >> runReleaseOn: aPath [
 
 { #category : #'as yet unclassified' }
 GLGWindows >> stopReleaseOn: aPath [
-	| command escapedPath |
-	escapedPath := aPath asFileReference pathString copyReplaceAll: '\' with: '\\'.
-	command := 'wmic process where "CommandLine like ''%', escapedPath, '%''" call terminate'.
+	| command "escapedPath" |
+"	escapedPath := aPath asFileReference pathString copyReplaceAll: '\' with: '\\'.
+	command := 'wmic process where ""CommandLine like ''%', escapedPath, '%''"" call terminate'.
 	LibC runCommand: command
-
+"
+	command := 'powershell -Command "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like ''*', aPath asFileReference pathString, '*'' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"'.
+	LibC runCommand: command
 ]

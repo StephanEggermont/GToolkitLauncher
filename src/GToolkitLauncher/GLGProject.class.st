@@ -7,7 +7,7 @@ Class {
 		'script',
 		'title'
 	],
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #'as yet unclassified' }
@@ -38,6 +38,10 @@ GLGProject >> path: anObject [
 	path := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+GLGProject >> run [
+]
+
 { #category : #accessing }
 GLGProject >> script [
 	^ script
@@ -51,6 +55,10 @@ GLGProject >> script: anObject [
 { #category : #'as yet unclassified' }
 GLGProject >> showFolder [
 	path inspect
+]
+
+{ #category : #'as yet unclassified' }
+GLGProject >> stop [
 ]
 
 { #category : #accessing }
