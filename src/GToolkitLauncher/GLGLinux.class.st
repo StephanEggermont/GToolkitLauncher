@@ -6,10 +6,14 @@ Class {
 
 { #category : #'as yet unclassified' }
 GLGLinux >> installOn: aPath [
-	| command |
-	command := (self cdCommandFor: aPath), '"',
-		aPath asFileReference pathString, '/bin/GlamorousToolkit-cli" *image st ',(self installFilePath: aPath),' --interactive --no-quit &'.
-	LibC runCommand: command
+	^ GtExternalProcessBuilder new
+		command: (aPath asFileReference / 'bin' / 'GlamorousToolkit-cli') fullName;
+		args: { '*image'. 'st'. (self installFilePath: aPath). '--interactive'. '--no-quit' };
+		workingDirectory: aPath asFileReference;
+		nullStdin;
+		nullStdout;
+		nullStderr;
+		spawn
 ]
 
 { #category : #'as yet unclassified' }
@@ -29,18 +33,28 @@ GLGLinux >> runCommand [
 
 { #category : #'as yet unclassified' }
 GLGLinux >> runReleaseOn: aPath [
-	| command runCmd |
-	runCmd := (aPath asFileReference pathString matches: '*GlamorousToolkitLinux64*')
-		ifTrue: [ self oldRunCommand ]
-		ifFalse: [ self runCommand ].
-	command := (self cdCommandFor: aPath), '"',
-		 aPath asFileReference pathString, runCmd.
-	LibC runCommand: command
+	| anExecutable |
+
+	anExecutable := (aPath asFileReference pathString matches: '*GlamorousToolkitLinux64*')
+		ifTrue: [ aPath asFileReference / 'glamoroustoolkit' ]
+		ifFalse: [ aPath asFileReference / 'bin' / 'GlamorousToolkit' ].
+
+	^ GtExternalProcessBuilder new
+		command: anExecutable fullName;
+		workingDirectory: aPath asFileReference;
+		nullStdin;
+		nullStdout;
+		nullStderr;
+		spawn
 ]
 
 { #category : #'as yet unclassified' }
 GLGLinux >> stopReleaseOn: aPath [ 
-	| command |
-	command := 'pkill -f "', aPath asFileReference pathString, '"'.
-	LibC runCommand: command
+	^ (GtExternalProcessBuilder new
+		command: 'pkill';
+		args: { '-f'. aPath asFileReference pathString };
+		nullStdin;
+		nullStdout;
+		nullStderr;
+		status) isSuccess
 ]

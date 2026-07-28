@@ -47,7 +47,7 @@ GLGMonitor >> isRunning [
 { #category : #'as yet unclassified' }
 GLGMonitor >> markRunning [
 	oldRunningProcesses := runningProcesses.
-	runningProcesses := (psLines select: [:each | each command matches: '*/gt/releases/*']) asOrderedCollection.
+	runningProcesses := (psLines select: [:each | (self normalizePathSeparators: each command) matches: (self normalizePathSeparators: self releasesPathPattern)]) asOrderedCollection.
 	oldRunningProcesses removeAllFoundIn: runningProcesses.
 	runningProcesses do: [:psr | self announcer announce: (ReleaseRunStateChange new 
 		pid: psr pid; 
@@ -59,11 +59,48 @@ GLGMonitor >> markRunning [
 		version: psr command; 
 		state: #stopped;
 		yourself)].
+
 ]
 
 { #category : #accessing }
 GLGMonitor >> model: aModel [ 
 	model := aModel
+]
+
+{ #category : #'as yet unclassified' }
+GLGMonitor >> normalizePathSeparators: aString [ 
+	"Windows process command lines (e.g. from CIM/WMI) use backslashes, while
+	release paths are built via FileReference (forward-slash normalized) even
+	on Windows. Normalize both sides to forward slashes before matching so
+	#markRunning correctly recognizes running releases on every platform."
+ 
+	^ aString copyReplaceAll: '\' with: '/'
+]
+
+{ #category : #'as yet unclassified' }
+GLGMonitor >> parseWindowsProcessLine: aLine [ 
+	<return: #GLGWindowsProcessInfo>
+ 
+	| aTabIndex aPid aCommand |
+	aTabIndex := aLine indexOf: Character tab.
+	aTabIndex = 0
+		ifTrue: [ aPid := aLine trimBoth. aCommand := '' ]
+		ifFalse: [
+			aPid := (aLine copyFrom: 1 to: aTabIndex - 1) trimBoth.
+			aCommand := (aLine copyFrom: aTabIndex + 1 to: aLine size) trimBoth ].
+ 
+	^ GLGWindowsProcessInfo pid: aPid asInteger command: aCommand
+
+]
+
+{ #category : #'as yet unclassified' }
+GLGMonitor >> releasesPathPattern [
+	"The glob pattern identifying a release process by its command line.
+	Written with forward slashes; both this pattern and the candidate command
+	line are run through #normalizePathSeparators: before comparing, so the
+	authored form here doesn't matter."
+ 
+	^ '*/gt/releases/*'
 ]
 
 { #category : #'as yet unclassified' }
@@ -78,7 +115,47 @@ GLGMonitor >> run: aRelease [
 
 { #category : #'as yet unclassified' }
 GLGMonitor >> runPs [
-	psLines := (LibC resultOfCommand: 'ps aux') lines collect: [:line | GLPSResult on: line].
+	"Populate psLines with the currently running processes, one entry per process,
+	each responding to #pid and #command. Uses the native external-process
+	library (no shell, no LibC) so nothing is executed through msvcrt.dll's
+	faked #system() and no console window is ever shown."
+ 
+	psLines := OSPlatform current isWindows
+		ifTrue: [ self runPsWindows ]
+		ifFalse: [ self runPsUnix ]
+
+]
+
+{ #category : #'as yet unclassified' }
+GLGMonitor >> runPsUnix [ 
+	^ (GtExternalProcessBuilder new
+		command: 'ps';
+		args: #('aux');
+		nullStdin;
+		output) stdout lines collect: [ :line | GLPSResult on: line ]
+]
+
+{ #category : #'as yet unclassified' }
+GLGMonitor >> runPsWindows [ 
+	"There is no 'ps' on Windows. Query the process list (pid + full command
+	line, which is what #markRunning matches against) via CIM/WMI through
+	PowerShell, run windowlessly and synchronously through
+	GtExternalProcessBuilder. Each output line is 'PID<TAB>CommandLine'."
+	<return: #Collection>
+ 
+	| aScript anOutput |
+	aScript := 'Get-CimInstance Win32_Process | ForEach-Object { "{0}`t{1}" -f $_.ProcessId, $_.CommandLine }'.
+ 
+	anOutput := GtExternalProcessBuilder new
+		command: 'powershell';
+		args: #('-NoProfile' '-NonInteractive' '-Command');
+		arg: aScript;
+		nullStdin;
+		output.
+ 
+	^ (anOutput stdout lines reject: [ :line | line trimBoth isEmpty ])
+		collect: [ :line | self parseWindowsProcessLine: line ]
+
 ]
 
 { #category : #'as yet unclassified' }

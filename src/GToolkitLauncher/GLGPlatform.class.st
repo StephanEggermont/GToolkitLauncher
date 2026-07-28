@@ -58,10 +58,7 @@ GLGPlatform >> runCommand [
 
 { #category : #'as yet unclassified' }
 GLGPlatform >> runReleaseOn: aPath [
-|command|
-	command := (self cdCommandFor: aPath), '"',
-		aPath asFileReference pathString, self runCommand.
-	LibC runCommand: command
+	self subclassResponsibility
 ]
 
 { #category : #'as yet unclassified' }

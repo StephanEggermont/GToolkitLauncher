@@ -6,10 +6,14 @@ Class {
 
 { #category : #'as yet unclassified' }
 GLGWindows >> installOn: aPath [
-	| command |
-	command := (self cdCommandFor: aPath), 'start /b"',
-		aPath asFileReference pathString, '/bin/GlamorousToolkit-cli" *image st ',(self installFilePath: aPath),' --interactive --no-quit &'.
-	LibC runCommand: command
+	^ GtExternalProcessBuilder new
+		command: (aPath asFileReference / 'bin' / 'GlamorousToolkit-cli.exe') fullName;
+		args: { '*image'. 'st'. (self installFilePath: aPath). '--interactive'. '--no-quit' };
+		workingDirectory: aPath asFileReference;
+		nullStdin;
+		nullStdout;
+		nullStderr;
+		spawn
 ]
 
 { #category : #'as yet unclassified' }
@@ -29,18 +33,29 @@ GLGWindows >> runCommand [
 
 { #category : #'as yet unclassified' }
 GLGWindows >> runReleaseOn: aPath [
-	|command|
-	command := (self cdCommandFor: aPath), self runCommand.
-	LibC runCommand: command
+	^ GtExternalProcessBuilder new
+		command: (aPath asFileReference / 'bin' / 'GlamorousToolkit.exe') fullName;
+		workingDirectory: aPath asFileReference;
+		nullStdin;
+		nullStdout;
+		nullStderr;
+		spawn
 ]
 
 { #category : #'as yet unclassified' }
 GLGWindows >> stopReleaseOn: aPath [
-	| command "escapedPath" |
-"	escapedPath := aPath asFileReference pathString copyReplaceAll: '\' with: '\\'.
-	command := 'wmic process where ""CommandLine like ''%', escapedPath, '%''"" call terminate'.
-	LibC runCommand: command
-"
-	command := 'powershell -Command "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like ''*', aPath asFileReference pathString, '*'' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"'.
-	LibC runCommand: command
+	| aScript aStatus |
+	aScript := 'Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like ''*',
+		aPath asFileReference pathString, '*'' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }'.
+
+	aStatus := GtExternalProcessBuilder new
+		command: 'powershell';
+		args: #('-NoProfile' '-NonInteractive' '-Command');
+		arg: aScript;
+		nullStdin;
+		nullStdout;
+		nullStderr;
+		status.
+
+	^ aStatus isSuccess
 ]
