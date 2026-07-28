@@ -11,9 +11,10 @@ Class {
 		'gtButton',
 		'updater',
 		'versionLabel',
-		'model'
+		'model',
+		'projectsView'
 	],
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #accessing }

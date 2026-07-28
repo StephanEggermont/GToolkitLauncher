@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'project'
 	],
-	#category : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
 { #category : #'as yet unclassified' }
@@ -83,8 +83,7 @@ GLGProjectCard >> update: aReleaseRunState [
 
 { #category : #accessing }
 GLGProjectCard >> updateContents [
-	(self childAt: 1) text: release releaseName.
-	(self childAt: 2) text: release lastChanged.
-	(self childAt: 3) items: release gitRepos
+	(self childAt: 1) text: project title.
+	(self childAt: 3) items: {}
 
 ]
