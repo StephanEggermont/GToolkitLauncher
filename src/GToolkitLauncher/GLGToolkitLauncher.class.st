@@ -24,7 +24,6 @@ GLGToolkitLauncher class >> open [
 
 { #category : #accessing }
 GLGToolkitLauncher >> addReleases [
-	model update.
 	self startMonitor.
 (	model releases sorted: [:a :b | a lastChanged asString > b lastChanged asString])do: [:release | 
 	pane addChild: (GLGReleaseCard new release: release; yourself)].
@@ -52,7 +51,7 @@ GLGToolkitLauncher >> checkAndDownloadAction [
 		model updater getLatestVersion.
 		versionLabel text: model updater refreshString.
 		model run.
-		self updateReleases.
+		model update.
 		button enable ]
 ]
 
@@ -63,9 +62,9 @@ GLGToolkitLauncher >> checkAndDownloadAndInstallAction [
 		model updater getLatestVersion.
 		versionLabel text: model updater refreshString.
 		model run.
-		self updateReleases.
+		model update.
 		self installInLatest.
-		self updateReleases.
+		model update.
 		button enable ]
 ]
 

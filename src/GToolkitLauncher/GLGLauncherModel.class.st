@@ -8,7 +8,7 @@ Class {
 		'releases',
 		'projects'
 	],
-	#category : 'GToolkitLauncher-GToolkitLauncher'
+	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
 
 { #category : #'as yet unclassified' }
@@ -94,7 +94,8 @@ GLGLauncherModel >> run [
 
 { #category : #'as yet unclassified' }
 GLGLauncherModel >> update [
-	releases := self getReleases
+	releases := self getReleases.
+	monitor announcer announce: ReleasesChanged new.
 ]
 
 { #category : #accessing }
