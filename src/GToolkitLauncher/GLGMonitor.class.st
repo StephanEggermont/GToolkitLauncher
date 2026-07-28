@@ -68,7 +68,12 @@ GLGMonitor >> model: aModel [
 
 { #category : #'as yet unclassified' }
 GLGMonitor >> run: aRelease [
-	self isRunning ifFalse: self start
+	self isRunning ifFalse: [self start].
+	self announcer announce: (ReleaseRunStateChange new
+		version: aRelease releaseName;
+		state: #running;
+		pid: '';
+		yourself)
 ]
 
 { #category : #'as yet unclassified' }
