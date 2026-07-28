@@ -98,3 +98,13 @@ GLGMonitor >> stop [
 		process := nil.
 	 ].
 ]
+
+{ #category : #'as yet unclassified' }
+GLGMonitor >> stopRelease: aRelease [ 
+	self announcer announce: (ReleaseRunStateChange new
+		version: aRelease releaseName;
+		state: #stopped;
+		pid: '';
+		yourself)
+
+]

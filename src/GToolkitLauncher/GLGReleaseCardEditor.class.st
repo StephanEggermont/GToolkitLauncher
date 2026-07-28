@@ -32,7 +32,8 @@ GLGReleaseCardEditor >> initialize [
 			border: (BlBorder paint: Color lightGray width: 1).
 	aContainer addChild: self showFolderButton.
 	aContainer addChild: self runButton.
-	self
+"	aContainer addChild: self stopButton.
+"	self
 		addChild: (BrScrollPane new
 				aptitude: BrScrollPaneAptitude + BrGlamorousWithVerticalScrollbarAptitude;
 				vFitContentLimited;
@@ -68,6 +69,21 @@ GLGReleaseCardEditor >> showFolderButton [
 		label: 'Show';
 		action: [ self fireEvent: BrContextMenuHideWish new.
 			card showFolder ]
+]
+
+{ #category : #'as yet unclassified' }
+GLGReleaseCardEditor >> stopButton [
+	^ BrButton new
+		beSmallSize;
+		aptitude: BrGlamorousButtonWithLabelAptitude new;
+		margin: (BlInsets
+				top: 5
+				left: 5
+				bottom: 5
+				right: 5);
+		label: 'Stop';
+		action: [ self fireEvent: BrContextMenuHideWish new.
+			card stop ]
 ]
 
 { #category : #'as yet unclassified' }

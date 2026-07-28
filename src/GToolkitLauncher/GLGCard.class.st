@@ -67,3 +67,8 @@ GLGCard >> simpleTextList [
 		itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
 		items: #()
 ]
+
+{ #category : #'as yet unclassified' }
+GLGCard >> stop [
+	self item stop
+]

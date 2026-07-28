@@ -33,3 +33,12 @@ GLGWindows >> runReleaseOn: aPath [
 	command := (self cdCommandFor: aPath), self runCommand.
 	LibC runCommand: command
 ]
+
+{ #category : #'as yet unclassified' }
+GLGWindows >> stopReleaseOn: aPath [
+	| command escapedPath |
+	escapedPath := aPath asFileReference pathString copyReplaceAll: '\' with: '\\'.
+	command := 'wmic process where "CommandLine like ''%', escapedPath, '%''" call terminate'.
+	LibC runCommand: command
+
+]

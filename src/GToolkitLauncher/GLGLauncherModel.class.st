@@ -76,6 +76,12 @@ GLGLauncherModel >> monitorRun: aRelease [
 ]
 
 { #category : #'as yet unclassified' }
+GLGLauncherModel >> monitorStop: aRelease [
+	monitor stopRelease: aRelease
+
+]
+
+{ #category : #'as yet unclassified' }
 GLGLauncherModel >> projects [
 	^projects ifNil: [projects := self getProjects]
 ]

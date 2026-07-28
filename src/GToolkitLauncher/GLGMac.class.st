@@ -36,3 +36,11 @@ GLGMac >> runReleaseOn: aPath [
 		'open ', aPath asFileReference pathString, self runCommand.
 	LibC runCommand: command
 ]
+
+{ #category : #'as yet unclassified' }
+GLGMac >> stopReleaseOn: aPath [
+	| command |
+	command := 'pkill -f "', aPath asFileReference pathString, '"'.
+	LibC runCommand: command
+
+]

@@ -37,3 +37,10 @@ GLGLinux >> runReleaseOn: aPath [
 		 aPath asFileReference pathString, runCmd.
 	LibC runCommand: command
 ]
+
+{ #category : #'as yet unclassified' }
+GLGLinux >> stopReleaseOn: aPath [ 
+	| command |
+	command := 'pkill -f "', aPath asFileReference pathString, '"'.
+	LibC runCommand: command
+]

@@ -6,7 +6,7 @@ Class {
 		'model',
 		'actualPath'
 	],
-	#category : 'GToolkitLauncher-GToolkitLauncher'
+	#category : #'GToolkitLauncher-GToolkitLauncher'
 }
 
 { #category : #'as yet unclassified' }
@@ -97,4 +97,11 @@ GLGRelease >> run [
 { #category : #'as yet unclassified' }
 GLGRelease >> showFolder [
 	path inspect
+]
+
+{ #category : #'as yet unclassified' }
+GLGRelease >> stop [
+	"this is a forced stop, without asking to save"
+	GLGPlatform current stopReleaseOn: actualPath.
+	model monitorStop: self
 ]

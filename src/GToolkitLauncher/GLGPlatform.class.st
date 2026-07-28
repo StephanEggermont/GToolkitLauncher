@@ -63,3 +63,8 @@ GLGPlatform >> runReleaseOn: aPath [
 		aPath asFileReference pathString, self runCommand.
 	LibC runCommand: command
 ]
+
+{ #category : #'as yet unclassified' }
+GLGPlatform >> stopReleaseOn: aPath [
+	self subclassResponsibility
+]
