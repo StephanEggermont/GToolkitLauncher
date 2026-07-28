@@ -14,6 +14,11 @@ GLGReleaseCard >> editor [
 		requestFocus
 ]
 
+{ #category : #'as yet unclassified' }
+GLGReleaseCard >> item [
+	^release
+]
+
 { #category : #accessing }
 GLGReleaseCard >> release [
 	^ release
@@ -23,35 +28,6 @@ GLGReleaseCard >> release [
 GLGReleaseCard >> release: anObject [
 	release := anObject.
 	self updateContents.
-]
-
-{ #category : #'as yet unclassified' }
-GLGReleaseCard >> run [
-	release run.
-
-]
-
-{ #category : #'as yet unclassified' }
-GLGReleaseCard >> showFolder [
-	release showFolder
-]
-
-{ #category : #'as yet unclassified' }
-GLGReleaseCard >> simpleTextField [
-	^ BrLabel new
-		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
-		padding: (BlInsets left: 2);
-		text: ''
-]
-
-{ #category : #'as yet unclassified' }
-GLGReleaseCard >> simpleTextList [
-	^ BrSimpleList new
-		aptitude: BrSimpleListAptitude new;
-		itemStencil: [ BrLabel new hMatchParent vFitContent beTinySize aptitude: BrGlamorousLabelAptitude ];
-		padding: (BlInsets left: 2);
-		itemDataBinder: [ :anItemElement :anItem | anItemElement text: anItem ];
-		items: #()
 ]
 
 { #category : #'as yet unclassified' }

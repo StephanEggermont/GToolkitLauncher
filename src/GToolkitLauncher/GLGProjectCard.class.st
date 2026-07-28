@@ -14,6 +14,11 @@ GLGProjectCard >> editor [
 		requestFocus
 ]
 
+{ #category : #'as yet unclassified' }
+GLGProjectCard >> item [
+	^project
+]
+
 { #category : #accessing }
 GLGProjectCard >> project [
 	^ project
@@ -23,17 +28,6 @@ GLGProjectCard >> project [
 GLGProjectCard >> project: anObject [
 	project := anObject.
 	self updateContents
-]
-
-{ #category : #'as yet unclassified' }
-GLGProjectCard >> run [
-	project run.
-
-]
-
-{ #category : #'as yet unclassified' }
-GLGProjectCard >> showFolder [
-	project showFolder
 ]
 
 { #category : #'as yet unclassified' }

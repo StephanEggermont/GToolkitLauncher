@@ -6,7 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 GLGCard >> editor [
-	^ self shouldBeImplemented
+	^ self subclassResponsibility
 ]
 
 { #category : #'as yet unclassified' }
@@ -33,6 +33,21 @@ GLGCard >> initialize [
 		addChild: self simpleTextField;
 		addChild: self simpleTextList;
 		addChild: self simpleTextField
+]
+
+{ #category : #'as yet unclassified' }
+GLGCard >> item [
+	^self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
+GLGCard >> run [
+	self item run
+]
+
+{ #category : #'as yet unclassified' }
+GLGCard >> showFolder [
+	self item showFolder
 ]
 
 { #category : #'as yet unclassified' }
