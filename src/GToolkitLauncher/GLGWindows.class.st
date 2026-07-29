@@ -1,10 +1,11 @@
 Class {
-	#name : #GLGWindows,
-	#superclass : #GLGPlatform,
-	#category : #GToolkitLauncher
+	#name : 'GLGWindows',
+	#superclass : 'GLGPlatform',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> installOn: aPath [
 	^ GtExternalProcessBuilder new
 		command: (aPath asFileReference / 'bin' / 'GlamorousToolkit-cli.exe') fullName;
@@ -16,22 +17,22 @@ GLGWindows >> installOn: aPath [
 		spawn
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> moveCommand [
 	^'move'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGWindows >> platformName [
 	^'Win64' 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGWindows >> runCommand [
 	^'start /b bin/GlamorousToolkit.exe'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> runReleaseOn: aPath [
 	^ GtExternalProcessBuilder new
 		command: (aPath asFileReference / 'bin' / 'GlamorousToolkit.exe') fullName;
@@ -42,7 +43,7 @@ GLGWindows >> runReleaseOn: aPath [
 		spawn
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindows >> stopReleaseOn: aPath [
 	| aScript aStatus |
 	aScript := 'Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like ''*',

@@ -1,15 +1,16 @@
 Class {
-	#name : #GLGCard,
-	#superclass : #BlElement,
-	#category : #GToolkitLauncher
+	#name : 'GLGCard',
+	#superclass : 'BlElement',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> editor [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> initialize [
 	super initialize.
 	self
@@ -35,22 +36,22 @@ GLGCard >> initialize [
 		addChild: self simpleTextField
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> item [
 	^self subclassResponsibility
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> run [
 	self item run
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> showFolder [
 	self item showFolder
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> simpleTextField [
 	^ BrLabel new
 		aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
@@ -58,7 +59,7 @@ GLGCard >> simpleTextField [
 		text: ''
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> simpleTextList [
 	^ BrSimpleList new
 		aptitude: BrSimpleListAptitude new;
@@ -68,7 +69,7 @@ GLGCard >> simpleTextList [
 		items: #()
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGCard >> stop [
 	self item stop
 ]

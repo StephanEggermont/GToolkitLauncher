@@ -1,10 +1,11 @@
 Class {
-	#name : #GLGLinux,
-	#superclass : #GLGPlatform,
-	#category : #GToolkitLauncher
+	#name : 'GLGLinux',
+	#superclass : 'GLGPlatform',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> installOn: aPath [
 	^ GtExternalProcessBuilder new
 		command: (aPath asFileReference / 'bin' / 'GlamorousToolkit-cli') fullName;
@@ -16,22 +17,22 @@ GLGLinux >> installOn: aPath [
 		spawn
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> moveCommand [
 	^'mv'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLinux >> platformName [
 	^'Linux64'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGLinux >> runCommand [
 	^'/bin/GlamorousToolkit" &'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> runReleaseOn: aPath [
 	| anExecutable |
 
@@ -48,7 +49,7 @@ GLGLinux >> runReleaseOn: aPath [
 		spawn
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGLinux >> stopReleaseOn: aPath [ 
 	^ (GtExternalProcessBuilder new
 		command: 'pkill';

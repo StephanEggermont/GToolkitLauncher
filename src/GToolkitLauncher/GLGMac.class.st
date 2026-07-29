@@ -1,10 +1,11 @@
 Class {
-	#name : #GLGMac,
-	#superclass : #GLGPlatform,
-	#category : #GToolkitLauncher
+	#name : 'GLGMac',
+	#superclass : 'GLGPlatform',
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> installOn: aPath [
 	^ GtExternalProcessBuilder new
 		command: (aPath asFileReference / 'GlamorousToolkit.app' / 'Contents' / 'MacOS' / 'GlamorousToolkit-cli') fullName;
@@ -16,24 +17,24 @@ GLGMac >> installOn: aPath [
 		spawn
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> moveCommand [
 	^'mv'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGMac >> platformName [
 	OSPlatform current processorArchitecture = 'x86_64'
 		ifTrue: [ ^ 'OSX64' ]
 		ifFalse: [ ^ 'OSXM1' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGMac >> runCommand [
 	^'/GlamorousToolkit.app &'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> runReleaseOn: aPath [
 	^ GtExternalProcessBuilder new
 		command: 'open';
@@ -45,7 +46,7 @@ GLGMac >> runReleaseOn: aPath [
 		spawn
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMac >> stopReleaseOn: aPath [
 	^ (GtExternalProcessBuilder new
 		command: 'pkill';

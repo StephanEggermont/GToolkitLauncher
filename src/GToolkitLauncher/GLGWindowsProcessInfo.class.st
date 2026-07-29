@@ -1,14 +1,15 @@
 Class {
-	#name : #GLGWindowsProcessInfo,
-	#superclass : #Object,
+	#name : 'GLGWindowsProcessInfo',
+	#superclass : 'Object',
 	#instVars : [
 		'pid',
 		'command'
 	],
-	#category : #GToolkitLauncher
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGWindowsProcessInfo class >> pid: anObject command: aCommand [ 
 	^self new
 		pid: anObject;
@@ -16,22 +17,32 @@ GLGWindowsProcessInfo class >> pid: anObject command: aCommand [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'as yet unclassified' }
+GLGWindowsProcessInfo >> = aProcessInfo [
+	^self pid = aProcessInfo pid
+]
+
+{ #category : 'accessing' }
 GLGWindowsProcessInfo >> command [
 	^ command
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGWindowsProcessInfo >> command: anObject [
 	command := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'as yet unclassified' }
+GLGWindowsProcessInfo >> hash [
+	^self pid hash
+]
+
+{ #category : 'accessing' }
 GLGWindowsProcessInfo >> pid [
 	^ pid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGWindowsProcessInfo >> pid: anObject [
 	pid := anObject
 ]
