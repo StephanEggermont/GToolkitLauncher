@@ -1,6 +1,6 @@
 Class {
-	#name : #GLGMonitor,
-	#superclass : #Object,
+	#name : 'GLGMonitor',
+	#superclass : 'Object',
 	#instVars : [
 		'model',
 		'runningProcesses',
@@ -11,27 +11,28 @@ Class {
 		'announcer',
 		'oldRunningProcesses'
 	],
-	#category : #GToolkitLauncher
+	#category : 'GToolkitLauncher',
+	#package : 'GToolkitLauncher'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGMonitor class >> on: aModel [
 	^(self new)
 		model: aModel;
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> announcer [
 	^announcer
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> defaultInterval [
 	^10 "seconds".
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> initialize [ 
 	oldRunningProcesses := OrderedCollection new.
 	runningProcesses := OrderedCollection new.
@@ -39,12 +40,12 @@ GLGMonitor >> initialize [
 	announcer := Announcer new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> isRunning [
 	^process notNil
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> markRunning [
 	oldRunningProcesses := runningProcesses.
 	runningProcesses := (psLines select: [:each | (self normalizePathSeparators: each command) matches: (self normalizePathSeparators: self releasesPathPattern)]) asOrderedCollection.
@@ -62,12 +63,12 @@ GLGMonitor >> markRunning [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GLGMonitor >> model: aModel [ 
 	model := aModel
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> normalizePathSeparators: aString [ 
 	"Windows process command lines (e.g. from CIM/WMI) use backslashes, while
 	release paths are built via FileReference (forward-slash normalized) even
@@ -77,14 +78,14 @@ GLGMonitor >> normalizePathSeparators: aString [
 	^ aString copyReplaceAll: '\' with: '/'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> parseWindowsProcessLine: aLine [ 
 	"Each line is 'PID<TAB>CPU<TAB>MEM<TAB>CommandLine' - command last since
 	it's the only field that may itself contain further structure."
 	<return: #GLGProcessInfo>
  
 	| parts |
-	parts := aLine tokenize: (String with: Character tab).
+	parts := aLine substrings: {Character tab}.
  
 	^ GLGProcessInfo
 		pid: (parts at: 1 ifAbsent: ['0']) trimBoth asInteger
@@ -93,7 +94,7 @@ GLGMonitor >> parseWindowsProcessLine: aLine [
 		mem: (parts at: 3 ifAbsent: [''])
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> releasesPathPattern [
 	"The glob pattern identifying a release process by its command line.
 	Written with forward slashes; both this pattern and the candidate command
@@ -103,7 +104,7 @@ GLGMonitor >> releasesPathPattern [
 	^ '*/gt/releases/*'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> run: aRelease [
 	self isRunning ifFalse: [self start].
 	self announcer announce: (ReleaseRunStateChange new
@@ -113,7 +114,7 @@ GLGMonitor >> run: aRelease [
 		yourself)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> runPs [
 	"Populate psLines with the currently running processes, one entry per process,
 	each responding to #pid and #command. Uses the native external-process
@@ -126,7 +127,7 @@ GLGMonitor >> runPs [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> runPsUnix [ 
 	^ (GtExternalProcessBuilder new
 		command: 'ps';
@@ -135,7 +136,7 @@ GLGMonitor >> runPsUnix [
 		output) stdout lines collect: [ :line | GLGProcessInfo fromPsLine: line ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> runPsWindows [ 
 	"There is no 'ps' on Windows. Query the process list (pid, cpu time in
 	seconds, working-set memory in MB, and full command line, which is what
@@ -159,7 +160,7 @@ GLGMonitor >> runPsWindows [
 		collect: [ :line | self parseWindowsProcessLine: line ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> start [
 	self isRunning ifTrue: [^self].
 	process := 
@@ -169,7 +170,7 @@ GLGMonitor >> start [
 	] forkAt: Processor userBackgroundPriority named: self class name
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> stop [
 	process ifNotNil: [
 		process terminate.
@@ -177,7 +178,7 @@ GLGMonitor >> stop [
 	 ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GLGMonitor >> stopRelease: aRelease [ 
 	self announcer announce: (ReleaseRunStateChange new
 		version: aRelease releaseName;
