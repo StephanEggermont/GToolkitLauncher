@@ -1,20 +1,19 @@
 Class {
-	#name : 'GLGReleaseCardEditor',
-	#superclass : 'BrHorizontalGrid',
+	#name : #GLGReleaseCardEditor,
+	#superclass : #BrHorizontalGrid,
 	#instVars : [
 		'card'
 	],
-	#category : 'GToolkitLauncher',
-	#package : 'GToolkitLauncher'
+	#category : 'GToolkitLauncher'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> card: aReleaseCard [
 	card := aReleaseCard.
 	self updateContents
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> initialize [
 	| aContainer |
 	super initialize.
@@ -42,7 +41,7 @@ GLGReleaseCardEditor >> initialize [
 				content: aContainer)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> runButton [
 	^ BrButton new
 		beSmallSize;
@@ -57,7 +56,7 @@ GLGReleaseCardEditor >> runButton [
 			card run ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> showFolderButton [
 	^ BrButton new
 		beSmallSize;
@@ -72,7 +71,7 @@ GLGReleaseCardEditor >> showFolderButton [
 			card showFolder ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> stopButton [
 	^ BrButton new
 		beSmallSize;
@@ -87,7 +86,7 @@ GLGReleaseCardEditor >> stopButton [
 			card stop ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGReleaseCardEditor >> updateContents [
 	(card background = Color green) ifTrue: [((self childAt: 1) childAt: 2) disable]
 ]
