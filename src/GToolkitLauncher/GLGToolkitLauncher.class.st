@@ -2,8 +2,8 @@
 I am the entry point for the GToolkit Launcher.
 "
 Class {
-	#name : 'GLGToolkitLauncher',
-	#superclass : 'Object',
+	#name : #GLGToolkitLauncher,
+	#superclass : #Object,
 	#instVars : [
 		'launcherView',
 		'toolbar',
@@ -14,23 +14,22 @@ Class {
 		'model',
 		'projectsView'
 	],
-	#category : 'GToolkitLauncher',
-	#package : 'GToolkitLauncher'
+	#category : #GToolkitLauncher
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher class >> open [
 	^self new open
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> addReleases [
 	self startMonitor.
 (	model releases sorted: [:a :b | a lastChanged asString > b lastChanged asString])do: [:release | 
 	pane addChild: (GLGReleaseCard new release: release; yourself)].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> analyseButton [
 	^BrButton new
 		margin: (BlInsets
@@ -45,7 +44,7 @@ GLGToolkitLauncher >> analyseButton [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> checkAndDownloadAction [
 	^ [ :button |
 		button disable.
@@ -56,7 +55,7 @@ GLGToolkitLauncher >> checkAndDownloadAction [
 		button enable ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> checkAndDownloadAndInstallAction [
 	^ [ :button |
 		button disable.
@@ -69,7 +68,7 @@ GLGToolkitLauncher >> checkAndDownloadAndInstallAction [
 		button enable ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> checkButton [
 	^BrButton new
 		margin: (BlInsets
@@ -84,7 +83,7 @@ GLGToolkitLauncher >> checkButton [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> gtButton [
 	gtButton := BrButton new
 			margin: (BlInsets
@@ -101,19 +100,19 @@ GLGToolkitLauncher >> gtButton [
 	^ gtButton
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> initialize [
 	model := GLGLauncherModel new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> installInLatest [
 	|release|
 	release := model releases detect: [:each | each releaseName = model updater latestVersion].
 	release install
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> launcherView [
 	launcherView := BlElement new
 		constraintsDo: [ :c | 
@@ -126,18 +125,18 @@ GLGToolkitLauncher >> launcherView [
 	^launcherView
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> model [
 	^ model
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> model: anObject [
 	model := anObject.
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> open [
 	|space|
 	space := BlSpace new.
@@ -158,12 +157,12 @@ GLGToolkitLauncher >> open [
 	space show
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> openDevelopmentEnvironmentAction [
 	^ [ GtWorld openDefault ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> pane [
 	pane := BlElement new
 		constraintsDo: [ :c | 
@@ -177,20 +176,21 @@ GLGToolkitLauncher >> pane [
 	^pane
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGToolkitLauncher >> projectsView [
 	projectsView := GLGProjectsView new.
 	projectsView background: Color green muchLighter lighter.
+	projectsView model: model.
 
 	^projectsView
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> startMonitor [
 	model monitor start.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGToolkitLauncher >> tabBar [
 	| aTabGroup |
 	aTabGroup := BrTabGroup new.
@@ -211,7 +211,7 @@ GLGToolkitLauncher >> tabBar [
 	^ aTabGroup
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> toolbar [
 	toolbar := BlElement new
 		background: Color lightGray muchLighter;
@@ -227,18 +227,18 @@ GLGToolkitLauncher >> toolbar [
 	^toolbar
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> updateReleases [
 	pane removeChildren.
 	self addReleases.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> updateRunningstate: aReleaseRunState [
 	pane childrenDo: [:aCard | aCard update: aReleaseRunState] 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGToolkitLauncher >> versionLabel [
 	versionLabel := BrLabel new
 		aptitude: BrGlamorousLabelAptitude;

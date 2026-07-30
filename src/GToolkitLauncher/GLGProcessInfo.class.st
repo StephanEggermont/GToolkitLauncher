@@ -1,17 +1,16 @@
 Class {
-	#name : 'GLGProcessInfo',
-	#superclass : 'Object',
+	#name : #GLGProcessInfo,
+	#superclass : #Object,
 	#instVars : [
 		'pid',
 		'command',
 		'cpu',
 		'mem'
 	],
-	#category : 'GToolkitLauncher',
-	#package : 'GToolkitLauncher'
+	#category : 'GToolkitLauncher'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGProcessInfo class >> fromPsLine: aLine [ 
 	"Parse one line of `ps aux` output. Command could have extra spaces in the path."
 	<return: #GLGProcessInfo>
@@ -46,7 +45,7 @@ GLGProcessInfo class >> fromPsLine: aLine [
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGProcessInfo class >> pid: aPid command: aCommand cpu: aCpu mem: aMem [
 	^self new
 		pid: aPid;
@@ -56,52 +55,52 @@ GLGProcessInfo class >> pid: aPid command: aCommand cpu: aCpu mem: aMem [
 		yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGProcessInfo >> = aProcessInfo [
 	^self pid = aProcessInfo pid
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> command [
 	^ command
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> command: anObject [
 	command := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> cpu [
 	^ cpu
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> cpu: anObject [
 	cpu := anObject
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGProcessInfo >> hash [
 	^self pid hash
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> mem [
 	^ mem
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> mem: anObject [
 	mem := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> pid [
 	^ pid
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGProcessInfo >> pid: anObject [
 	pid := anObject
 ]

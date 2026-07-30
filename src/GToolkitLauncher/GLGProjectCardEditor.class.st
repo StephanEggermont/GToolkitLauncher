@@ -1,5 +1,5 @@
 Class {
-	#name : #GLGReleaseCardEditor,
+	#name : #GLGProjectCardEditor,
 	#superclass : #BrHorizontalGrid,
 	#instVars : [
 		'card'
@@ -8,41 +8,14 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-GLGReleaseCardEditor >> card: aReleaseCard [
-	card := aReleaseCard.
+GLGProjectCardEditor >> card: aProjectCard [
+	card := aProjectCard.
 	self updateContents
+
 ]
 
 { #category : #'as yet unclassified' }
-GLGReleaseCardEditor >> initialize [
-	| aContainer |
-	super initialize.
-
-	self
-		hFitContent;
-		vFitContentLimited;
-		geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
-		padding: (BlInsets all: 3).
-
-	aContainer := BrVerticalPane new
-			hFitContent;
-			vFitContentLimited;
-			geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
-			background: Color white;
-			border: (BlBorder paint: Color lightGray width: 1).
-	aContainer addChild: self showFolderButton.
-	aContainer addChild: self runButton.
-	aContainer addChild: self stopButton.
-	self
-		addChild: (BrScrollPane new
-				aptitude: BrScrollPaneAptitude + BrGlamorousWithVerticalScrollbarAptitude;
-				vFitContentLimited;
-				hFitContent;
-				content: aContainer)
-]
-
-{ #category : #'as yet unclassified' }
-GLGReleaseCardEditor >> runButton [
+GLGProjectCardEditor >> editScriptButton [
 	^ BrButton new
 		beSmallSize;
 		aptitude: BrGlamorousButtonWithLabelAptitude new;
@@ -51,13 +24,42 @@ GLGReleaseCardEditor >> runButton [
 				left: 5
 				bottom: 5
 				right: 5);
-		label: 'Run';
+		label: 'Edit Script';
 		action: [ self fireEvent: BrContextMenuHideWish new.
-			card run ]
+			card editScript ]
+
 ]
 
 { #category : #'as yet unclassified' }
-GLGReleaseCardEditor >> showFolderButton [
+GLGProjectCardEditor >> initialize [
+	| aContainer |
+	super initialize.
+ 
+	self
+		hFitContent;
+		vFitContentLimited;
+		geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
+		padding: (BlInsets all: 3).
+ 
+	aContainer := BrVerticalPane new
+			hFitContent;
+			vFitContentLimited;
+			geometry: (BlRoundedRectangleGeometry cornerRadius: 3);
+			background: Color white;
+			border: (BlBorder paint: Color lightGray width: 1).
+	aContainer addChild: self showFolderButton.
+	aContainer addChild: self editScriptButton.
+	self
+		addChild: (BrScrollPane new
+				aptitude: BrScrollPaneAptitude + BrGlamorousWithVerticalScrollbarAptitude;
+				vFitContentLimited;
+				hFitContent;
+				content: aContainer)
+
+]
+
+{ #category : #'as yet unclassified' }
+GLGProjectCardEditor >> showFolderButton [
 	^ BrButton new
 		beSmallSize;
 		aptitude: BrGlamorousButtonWithLabelAptitude new;
@@ -69,24 +71,9 @@ GLGReleaseCardEditor >> showFolderButton [
 		label: 'Show';
 		action: [ self fireEvent: BrContextMenuHideWish new.
 			card showFolder ]
+
 ]
 
 { #category : #'as yet unclassified' }
-GLGReleaseCardEditor >> stopButton [
-	^ BrButton new
-		beSmallSize;
-		aptitude: BrGlamorousButtonWithLabelAptitude new;
-		margin: (BlInsets
-				top: 5
-				left: 5
-				bottom: 5
-				right: 5);
-		label: 'Stop';
-		action: [ self fireEvent: BrContextMenuHideWish new.
-			card stop ]
-]
-
-{ #category : #'as yet unclassified' }
-GLGReleaseCardEditor >> updateContents [
-	(card background = Color green) ifTrue: [((self childAt: 1) childAt: 2) disable]
+GLGProjectCardEditor >> updateContents [
 ]

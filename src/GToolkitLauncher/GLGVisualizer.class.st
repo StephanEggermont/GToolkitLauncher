@@ -1,17 +1,16 @@
 Class {
-	#name : 'GLGVisualizer',
-	#superclass : 'Object',
-	#category : 'GToolkitLauncher',
-	#package : 'GToolkitLauncher'
+	#name : #GLGVisualizer,
+	#superclass : #Object,
+	#category : 'GToolkitLauncher'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> codeView [
 	<gtExample>
 	^self packageViewIncluding: self class
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> colorForClass: aClass [
 	(aClass methods anySatisfy: [:m | m isAbstract]) ifTrue: [^Color blue].
 	(aClass superclass = TestCase ) ifTrue: [ ^Color orange ].
@@ -21,7 +20,7 @@ GLGVisualizer >> colorForClass: aClass [
 	^Color black
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> colorForMethod: aCompiledMethod [
 	(aCompiledMethod referencedClasses anySatisfy: [:c | c isDeprecated]) ifTrue:[^Color red].
 	aCompiledMethod isFromTrait ifTrue: [^Color brown].
@@ -34,12 +33,12 @@ GLGVisualizer >> colorForMethod: aCompiledMethod [
 	^Color green
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> isAccessor: aCompiledMethod [
 	^(self isSimpleGetter: aCompiledMethod) or: [self isSimpleSetter: aCompiledMethod]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> isSimpleGetter: aMethod [ 
 	"Only a method directly returning an instance variable"
 	^  (aMethod ast statements size = 1) and: 
@@ -48,7 +47,7 @@ GLGVisualizer >> isSimpleGetter: aMethod [
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> isSimpleSetter: aMethod [ 
 	"Only a method directly returning an instance variable"
 	^  (aMethod ast statements size = 1) and: 
@@ -56,7 +55,7 @@ GLGVisualizer >> isSimpleSetter: aMethod [
 		[ aMethod ast statements first variable isVariable] ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 GLGVisualizer >> packageViewIncluding: aClass [
 	| view tags|
 	view := GtMondrian new.

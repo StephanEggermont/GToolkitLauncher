@@ -1,12 +1,10 @@
 Class {
-	#name : 'GLGButtonAptitude',
-	#superclass : 'BrGlamorousButtonRectangularAptitude',
-	#category : 'GToolkitLauncher-GToolkitLauncher',
-	#package : 'GToolkitLauncher',
-	#tag : 'GToolkitLauncher'
+	#name : #GLGButtonAptitude,
+	#superclass : #BrGlamorousButtonRectangularAptitude,
+	#category : 'GToolkitLauncher-GToolkitLauncher'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGButtonAptitude >> initialize [
 	| miniPadding tinyPadding smallPadding normalPadding largePadding hugePadding miniHeight tinyHeight smallHeight normalHeight largeHeight hugeHeight |
 	super initialize.
@@ -63,7 +61,7 @@ GLGButtonAptitude >> initialize [
 	self add: BrGlamorousButtonWithLabelTooltipAptitude2 new
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGButtonAptitude >> left [
 	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
 							topLeft: cornerRadius;
@@ -73,7 +71,7 @@ GLGButtonAptitude >> left [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGButtonAptitude >> middle [
 	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
 							topLeft: 0;
@@ -82,7 +80,7 @@ GLGButtonAptitude >> middle [
 							bottomRight: 0)).
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGButtonAptitude >> right [
 	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
 							topLeft: 0;
@@ -92,7 +90,7 @@ GLGButtonAptitude >> right [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 GLGButtonAptitude >> separate [
 	self default geometry: ( BlRoundedRectangleGeometry cornerRadii: (BlCornerRadii new
 							topLeft: cornerRadius;
